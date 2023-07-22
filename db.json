@@ -1,0 +1,834 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "RARE RABBIT",
+      "tagLine": "Jails Peach Shirt",
+      "description": "Jalis Peach Shirt with full sleeves",
+      "imageUrl": "images/rare-rabbit-peach-shirt.jpg",
+      "thumbnailUrl": "images/rare-rabbit-peach-shirt.jpg",
+      "imgAltText": "RARE RABBIT Shirt",
+      "maxRetailPrice": 3499,
+      "category": "Men",
+      "discountApplicable": 10,
+      "added": "7/16/2023",
+      "quantity": 30,
+      "bestSellerRanking": 2,
+      "featured": true,
+      "reviews": [
+        {
+          "id": 100,
+          "name": "Apoorva",
+          "email": "apoorva@gmail.com",
+          "phone": "9876543210",
+          "comment": "amazing!",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "BAVARIA",
+      "tagLine": "Chiffon Gulabo Printed Anarkali (Set of 3)",
+      "description": "Featuring a pastel pink full sleeved long anarkali chiffon set accened with floral print. This elegant piece is embraced with heavy sequened work on the yoke paired with gota zari laces and tasels. Featurin full sleeved and round neck design along with a cotton matching trouser, this long anarkali piece offers a complete party look. Syle this pair with any jewellery to attain a best ethnic look.",
+      "imageUrl": "images/bavaria-anarkali.jpg",
+      "thumbnailUrl": "images/bavaria-anarkali.jpg",
+      "imgAltText": "BAVARIA Chiffon Gulabo Printed Anarkali",
+      "maxRetailPrice": 11095,
+      "category": "Women",
+      "discountApplicable": 40,
+      "added": "7/16/2023",
+      "quantity": 5,
+      "bestSellerRanking": 5,
+      "featured": true,
+      "reviews": []
+    },
+    {
+      "id": 3,
+      "name": "Rare Rabbit",
+      "tagLine": "Cesco White Shirt",
+      "description": "Cesco White Shirt",
+      "imageUrl": "images/rare-rabbit-white-shirt.jpg",
+      "thumbnailUrl": "images/rare-rabbit-white-shirt.jpg",
+      "imgAltText": "RARE RABBIT Shirt",
+      "maxRetailPrice": 3499,
+      "category": "Men",
+      "discountApplicable": 0,
+      "added": "7/16/2023",
+      "quantity": 20,
+      "bestSellerRanking": 2,
+      "featured": true,
+      "reviews": [
+        {
+          "id": 101,
+          "name": "Bharath",
+          "email": "bharath@gmail.com",
+          "phone": "97654663",
+          "comment": "amazing!",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Allen Solly",
+      "tagLine": "Men Green Slim Fit Stripe Full Sleeves Formal Shirt",
+      "description": "Update your look with this Green Stripe Slim Fit shirt from Allen Solly by Allen Solly and enjoy the attention.",
+      "imageUrl": "images/allen-solly-shirt.jpg",
+      "thumbnailUrl": "images/allen-solly-shirt.jpg",
+      "imgAltText": "Allen Solly Shirt",
+      "maxRetailPrice": 3499,
+      "category": "Men",
+      "discountApplicable": 0,
+      "added": "7/16/2023",
+      "quantity": 10,
+      "bestSellerRanking": 2,
+      "featured": true,
+      "reviews": [
+        {
+          "id": 102,
+          "name": "Arun",
+          "email": "Arun@gmail.com",
+          "phone": "4543535436",
+          "comment": "good!",
+          "rating": 3
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Louis Philippe",
+      "tagLine": "Blue Formal Shirt",
+      "description": "Designed for comfort and style, this Blue Stripe Classic Fit shirt from Louis Philippe by House of Louis Philippe will give you a sartorial edge.",
+      "imageUrl": "images/louis-philippe-shirt.jpg",
+      "thumbnailUrl": "images/louis-philippe-shirt.jpg",
+      "imgAltText": "Louis Philippe Blue Formal Shirts",
+      "maxRetailPrice": 3500,
+      "category": "Men",
+      "discountApplicable": 30,
+      "added": "7/16/2023",
+      "quantity": 30,
+      "bestSellerRanking": 2,
+      "featured": true,
+      "reviews": [
+        {
+          "id": 1002,
+          "name": "Kevin",
+          "email": "k@l.com",
+          "phone": "97654663",
+          "comment": "amazing!",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "FableStreet",
+      "tagLine": "Linen Wide Leg Trousers - Pale Beige",
+      "description": "These beige trousers by FableStreet are crafted in linen. They feature a flared leg and roomy pockets.",
+      "imageUrl": "images/fable-street-trousers.jpg",
+      "thumbnailUrl": "images/fable-street-trousers.jpg",
+      "imgAltText": "FableStreet Linen Wide Leg Trousers - Pale Beige",
+      "maxRetailPrice": 2995,
+      "category": "Women",
+      "discountApplicable": 22,
+      "added": "7/16/2023",
+      "quantity": 30,
+      "bestSellerRanking": 3,
+      "featured": true,
+      "reviews": [
+        {
+          "id": 1002,
+          "name": "Kevin",
+          "email": "k@l.com",
+          "phone": "97654663",
+          "comment": "amazing!",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "US Polo Assn Sweatshirt",
+      "tagLine": "Cotton Knit Full Sleeves Sweatshirt Text Print - Yellow",
+      "description": "Brand - US Polo Assn Type -  Sweatshirts Fabric - Cotton Knit Sleeves - Full Sleeves Neck - Round Neck Style - Pullover Closure - Rib at neck Pattern - Text Print Occasion - Light Winter wear Fit - Regular fit",
+      "imageUrl": "images/us-polo-yellow-t-shirt.jpg",
+      "thumbnailUrl": "images/us-polo-yellow-t-shirt.jpg",
+      "imgAltText": "US Polo Assn Sweatshirt -Yellow",
+      "maxRetailPrice": 1599,
+      "category": "Kids",
+      "discountApplicable": 30,
+      "added": "7/16/2023",
+      "quantity": 10,
+      "bestSellerRanking": 5,
+      "featured": true,
+      "reviews": [
+        {
+          "id": 1002,
+          "name": "Kevin",
+          "email": "k@l.com",
+          "phone": "97654663",
+          "comment": "amazing!",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "CELIO",
+      "tagLine": "Off White Solid Casual Shirt",
+      "description": "Exude style and sophistication effortlessly by wearing this off white shirt from Celio. Finely crafted in premium linen fabric to meet the best standards of comfort and ensure an unmatched sheen, it is designed with a regular fit for a trendy and young look. Don this shirt with lightly washed jeans and lace-up sneakers to get that super stylish look.",
+      "imageUrl": "images/celio-casual-shirt.jpg",
+      "thumbnailUrl": "images/celio-casual-shirt.jpg",
+      "imgAltText": "CELIO Shirt",
+      "maxRetailPrice": 2799,
+      "category": "Men",
+      "discountApplicable": 50,
+      "added": "7/16/2023",
+      "quantity": 3,
+      "bestSellerRanking": 4.4,
+      "featured": true,
+      "reviews": [
+        {
+          "id": 1002,
+          "name": "Kevin",
+          "email": "k@l.com",
+          "phone": "97654663",
+          "comment": "amazing!",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "United Colors of Benetton",
+      "tagLine": "Stripe Shirt",
+      "description": "United Colors of Benetton Stripe Shirts with full sleeves and collar neck ",
+      "imageUrl": "images/ucb-stripe-shirt.jpg",
+      "thumbnailUrl": "images/ucb-stripe-shirt.jpg",
+      "imgAltText": "United Colors of Benetton shirt",
+      "maxRetailPrice": 3299,
+      "category": "Men",
+      "discountApplicable": 0,
+      "added": "7/16/2023",
+      "quantity": 25,
+      "bestSellerRanking": 3,
+      "featured": true,
+      "reviews": []
+    },
+    {
+      "id": 10,
+      "name": "CELIO",
+      "tagLine": "Men Solid Olive Short Sleeve Shirt",
+      "description": "Upgrade your wardrobe with this casual shirt by CELIO. Made with the finest material, it features a collar neck and half sleeves. Style it with chinos and loafers to complete the look.",
+      "imageUrl": "images/celio-green-shirt.jpg",
+      "thumbnailUrl": "images/celio-green-shirt.jpg",
+      "imgAltText": "CELIO Shirt",
+      "maxRetailPrice": 2999,
+      "category": "Men",
+      "discountApplicable": 20,
+      "added": "7/16/2023",
+      "quantity": 3,
+      "bestSellerRanking": 4.4,
+      "featured": true,
+      "reviews": []
+    },
+    {
+      "id": 11,
+      "name": "American Eagle",
+      "tagLine": "Women Yellow Long-sleeve Square Neck Tunic",
+      "description": "Perfect for all casual outings, this yellow top from American Eagle fuses comfort and fashion. Made from blended fabric with a square neck and full sleeves, tag with a pair of jeans and sneakers for a complete look.",
+      "imageUrl": "images/american-eagle-tunic.jpg",
+      "thumbnailUrl": "images/american-eagle-tunic.jpg",
+      "imgAltText": "American Eagle Yellow Tunic",
+      "maxRetailPrice": 2799,
+      "category": "Women",
+      "discountApplicable": 60,
+      "added": "7/16/2023",
+      "quantity": 5,
+      "bestSellerRanking": 4.5,
+      "featured": true,
+      "reviews": [
+        {
+          "id": 1002,
+          "name": "Kevin",
+          "email": "k@l.com",
+          "phone": "97654663",
+          "comment": "amazing!",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Aaheli",
+      "tagLine": "Pearl Off White Chiffon & Laced Tiered Shirt Dress",
+      "description": "Aaheli Pearl Off White Chiffon & Laced Tiered Shirt Dress.",
+      "imageUrl": "images/aaheli-shirt-dress.jpg",
+      "thumbnailUrl": "images/aaheli-shirt-dress.jpg",
+      "imgAltText": "Aaheli shirt dress",
+      "maxRetailPrice": 3550,
+      "category": "Women",
+      "discountApplicable": 10,
+      "added": "7/16/2023",
+      "quantity": 30,
+      "bestSellerRanking": 5,
+      "featured": true,
+      "reviews": [
+        {
+          "id": 1002,
+          "name": "Kevin",
+          "email": "k@l.com",
+          "phone": "97654663",
+          "comment": "amazing!",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "name": "CELIO",
+      "tagLine": "Mens Multi Color Full Sleeved Sweater",
+      "description": "Warm-up with this top-quality multi-coloured sweater from CELIO and beat the chilly temperatures. This cotton full-sleeve sweater features a round neck. Pair this sweater with classic trousers and oxfords when headed out.",
+      "imageUrl": "images/celio-pullover.jpg",
+      "thumbnailUrl": "images/celio-pullover.jpg",
+      "imgAltText": "CELIO Shirt",
+      "maxRetailPrice": 2799,
+      "category": "Men",
+      "discountApplicable": 50,
+      "added": "7/16/2023",
+      "quantity": 3,
+      "bestSellerRanking": 4.4,
+      "featured": true,
+      "reviews": []
+    },
+    {
+      "id": 14,
+      "name": "CELIO",
+      "tagLine": "Regular Short White Casual Shirts",
+      "description": "This shirt assures that you look effortlessly stylish. This white shirt that bridges the gap between smart and casual is comfortable all-day wear. It's true to size and features regular fit. For casual outings, wear it beneath outerwear and leather jackets. This versatile shirt is a must for your wardrobe. Elevate your look by pairing it with smart trousers and a pair of oxfords for an evening out.",
+      "imageUrl": "images/celio-white-shirt.jpg",
+      "thumbnailUrl": "images/celio-white-shirt.jpg",
+      "imgAltText": "CELIO Shirt",
+      "maxRetailPrice": 2799,
+      "category": "Men",
+      "discountApplicable": 35,
+      "added": "7/16/2023",
+      "quantity": 3,
+      "bestSellerRanking": 5,
+      "featured": true,
+      "reviews": [
+        {
+          "id": 1002,
+          "name": "Kevin",
+          "email": "k@l.com",
+          "phone": "97654663",
+          "comment": "amazing!",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Babyhug Kurta With Dhoti",
+      "tagLine": "Cotton Dobby Full Sleeves Kurta With Dhoti Embroidered - White & Blue",
+      "description": "Brand - Babyhug Type - Kurta & Dhoti Set Fabric- 100% Cotton DC Sleeves - Full Sleeves Neck - Mandarin Collar Neck Opening- Front Buttons Length - Full Length Pattern - Embroidered Occasion - Ethnic Wear Fit - Regular Fit.",
+      "imageUrl": "images/babyhug-ethic-dress.jpg",
+      "thumbnailUrl": "images/babyhug-ethic-dress.jpg",
+      "imgAltText": "Cotton Dobby Full Sleeves Kurta With Dhoti",
+      "maxRetailPrice": 1899,
+      "category": "Kids",
+      "discountApplicable": 26,
+      "added": "7/16/2023",
+      "quantity": 10,
+      "bestSellerRanking": 5,
+      "featured": true,
+      "reviews": [
+        {
+          "id": 1002,
+          "name": "Kevin",
+          "email": "k@l.com",
+          "phone": "97654663",
+          "comment": "amazing!",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Foreverkidz",
+      "tagLine": "Sequin & Tulle Net English Elegance Party Frock for Girls - GOLDEN",
+      "description": "Brand Name - Foreverkidz Fabric - Sequin & Tulle Net Neck - V Neck Back- Back Opening Sleeves - Full Sleeves Length - Above Knee Length Occasion - Party Wear Fit - Regular Fit",
+      "imageUrl": "images/forever-kidz-dress.jpg",
+      "thumbnailUrl": "images/forever-kidz-dress.jpg",
+      "imgAltText": "Foreverkidz Frock for Girls",
+      "maxRetailPrice": 3999,
+      "category": "Kids",
+      "discountApplicable": 30,
+      "added": "7/16/2023",
+      "quantity": 10,
+      "bestSellerRanking": 5,
+      "featured": true,
+      "reviews": [
+        {
+          "id": 1002,
+          "name": "Kevin",
+          "email": "k@l.com",
+          "phone": "97654663",
+          "comment": "amazing!",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Tommy Hilfiger Sweatshirt",
+      "tagLine": "Full Sleeves Slim Fit Sweatshirt Logo Print - White",
+      "description": "Brand - Tommy Hilfiger Type - Sweatshirt Fabric - Cotton/Knit Sleeves - Full Sleeves Neck - Round Neck Closure - Rib at Neck Pattern - Logo Print Occasion - Light Winter Wear Fit - Slim Fit",
+      "imageUrl": "images/tommy-hilfiger-white-t-shirt.jpg",
+      "thumbnailUrl": "images/tommy-hilfiger-white-t-shirt.jpg",
+      "imgAltText": "Tommy Hilfiger Sweatshirt",
+      "maxRetailPrice": 2599,
+      "category": "Kids",
+      "discountApplicable": 20,
+      "added": "7/16/2023",
+      "quantity": 1,
+      "bestSellerRanking": 5,
+      "featured": true,
+      "reviews": [
+        {
+          "id": 1002,
+          "name": "Kevin",
+          "email": "k@l.com",
+          "phone": "97654663",
+          "comment": "amazing!",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "name": "JACK & JONES",
+      "tagLine": "Blue Striped Full Sleeves Shirt",
+      "description": "Super smart and classic striped full sleeves shirt made from cotton fabric",
+      "imageUrl": "images/jack-and-jones-shirt.jpg",
+      "thumbnailUrl": "images/jack-and-jones-shirt.jpg",
+      "imgAltText": "JACK & JONES Blue Striped Full Sleeves Shirt",
+      "maxRetailPrice": 2999,
+      "category": "Men",
+      "discountApplicable": 30,
+      "added": "7/16/2023",
+      "quantity": 10,
+      "bestSellerRanking": 5,
+      "featured": true,
+      "reviews": [
+        {
+          "id": 1002,
+          "name": "Kevin",
+          "email": "k@l.com",
+          "phone": "97654663",
+          "comment": "amazing!",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Ahi Clothing",
+      "tagLine": "Parrot Green Kali Kurta (Set of 2)",
+      "description": "Long padded front slit kali kurta is curated in parrot green colour. Handwork of moti, zari, zardosi, mirror, salli, cutdana and gota patti over the choli of kurta Plain parrot green colour flared palazzo",
+      "imageUrl": "images/ahi-green-kurtha.jpg",
+      "thumbnailUrl": "images/ahi-green-kurtha.jpg",
+      "imgAltText": "Ahi Clothing Parrot Green Kali Kurta",
+      "maxRetailPrice": 21995,
+      "category": "Women",
+      "discountApplicable": 10,
+      "added": "7/16/2023",
+      "quantity": 10,
+      "bestSellerRanking": 5,
+      "featured": true,
+      "reviews": [
+        {
+          "id": 1002,
+          "name": "Kevin",
+          "email": "k@l.com",
+          "phone": "97654663",
+          "comment": "amazing!",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "name": "Ahi Clothing",
+      "tagLine": "Rose Pink Kali Kurta (Set of 3)",
+      "description": "Padded kali kurta with ready to wear handworked dupatta. Handwork of cutdana, moti, sequence and flower & leaves made of fabric. Plain rose pink satin palazzo with organza patch and zari laces. Dupatta: Rose pink organza jacket dupatta with handwork",
+      "imageUrl": "images/ahi-pink-kurtha.jpg",
+      "thumbnailUrl": "images/ahi-pink-kurtha.jpg",
+      "imgAltText": "Ahi Clothing",
+      "maxRetailPrice": 19995,
+      "category": "Women",
+      "discountApplicable": 10,
+      "added": "7/16/2023",
+      "quantity": 10,
+      "bestSellerRanking": 5,
+      "featured": true,
+      "reviews": [
+        {
+          "id": 1002,
+          "name": "Kevin",
+          "email": "k@l.com",
+          "phone": "97654663",
+          "comment": "amazing!",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "name": "Calvin Klein T shirt",
+      "tagLine": "Organic Cotton Half Sleeves Slim Fit T-Shirt Logo Print- Beige",
+      "description": "Brand - Calvin Klein Type - T-Shirt Fabric- Cotton/Knit Sleeves - Half Sleeves Neck - Round Neck Pattern - Logo Print Occasion - Casual Wear Fit - Regular Fit",
+      "imageUrl": "images/calvin-klein-t-shirt.jpg",
+      "thumbnailUrl": "images/calvin-klein-t-shirt.jpg",
+      "imgAltText": "Calvin Klein T shirt",
+      "maxRetailPrice": 1099,
+      "category": "Kids",
+      "discountApplicable": 20,
+      "added": "7/16/2023",
+      "quantity": 10,
+      "bestSellerRanking": 5,
+      "featured": true,
+      "reviews": [
+        {
+          "id": 1002,
+          "name": "Kevin",
+          "email": "k@l.com",
+          "phone": "97654663",
+          "comment": "amazing!",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "name": "FableStreet",
+      "tagLine": "Mandarin Collared Linen Shirt - White",
+      "description": "This white shirt by FableStreet is crafted in linen. It features a timeless design with a mandarin collar.",
+      "imageUrl": "images/fable-street-linen-shirt.jpg",
+      "thumbnailUrl": "images/fable-street-linen-shirt.jpg",
+      "imgAltText": "FableStreet Mandarin Collared Linen Shirt - White",
+      "maxRetailPrice": 2595,
+      "category": "Women",
+      "discountApplicable": 22,
+      "added": "7/16/2023",
+      "quantity": 10,
+      "bestSellerRanking": 5,
+      "featured": true,
+      "reviews": [
+        {
+          "id": 1002,
+          "name": "Kevin",
+          "email": "k@l.com",
+          "phone": "97654663",
+          "comment": "amazing!",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "name": "Jack & Jones Junior",
+      "tagLine": "Jack & Jones Junior Half Sleeves Tee Text Print - Black",
+      "description": "Brand - Jack & Jones Junior Type - Tee Fabric - Cotton/ Knit Sleeves - Half Neck - Round Style - Pullover Occasion - Casual Wear Fit - Regular Fit",
+      "imageUrl": "images/jack-and-jones-t-shirt.jpg",
+      "thumbnailUrl": "images/jack-and-jones-t-shirt.jpg",
+      "imgAltText": "Jack & Jones Junior Half Sleeves Tee Text Print - Black",
+      "maxRetailPrice": 799,
+      "category": "Kids",
+      "discountApplicable": 45,
+      "added": "7/16/2023",
+      "quantity": 10,
+      "bestSellerRanking": 5,
+      "featured": true,
+      "reviews": [
+        {
+          "id": 1002,
+          "name": "Kevin",
+          "email": "k@l.com",
+          "phone": "97654663",
+          "comment": "amazing!",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "name": "Suramya",
+      "tagLine": "Floral Tier Dress - Beige",
+      "description": "A captivating and breezy summer dress set against soothing sea blue, this tier dress is perfect for not just a sunny day out but for those somber evenings of reflection.",
+      "imageUrl": "images/suramya-dress.jpg",
+      "thumbnailUrl": "images/suramya-dress.jpg",
+      "imgAltText": "Suramya Floral Tier Dress - Beige",
+      "maxRetailPrice": 6500,
+      "category": "Women",
+      "discountApplicable": 0,
+      "added": "7/16/2023",
+      "quantity": 10,
+      "bestSellerRanking": 5,
+      "featured": true,
+      "reviews": [
+        {
+          "id": 1002,
+          "name": "Kevin",
+          "email": "k@l.com",
+          "phone": "97654663",
+          "comment": "amazing!",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "name": "Allen Solly",
+      "tagLine": "Womens Black Sweatshirt",
+      "description": "A perfect black print sweatshirt from Allen Solly Womens Woman is all you need to complement your look.",
+      "imageUrl": "images/allen-solly-black-sweatshirt.jpg",
+      "thumbnailUrl": "images/allen-solly-black-sweatshirt.jpg",
+      "imgAltText": "Allen Solly Womens Black Sweatshirt",
+      "maxRetailPrice": 1999,
+      "category": "Women",
+      "discountApplicable": 45,
+      "added": "7/16/2023",
+      "quantity": 10,
+      "bestSellerRanking": 5,
+      "featured": true,
+      "reviews": [
+        {
+          "id": 1002,
+          "name": "Kevin",
+          "email": "k@l.com",
+          "phone": "97654663",
+          "comment": "amazing!",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "name": "US Polo Assn",
+      "tagLine": "Half Sleeves T-Shirt Striped - Black",
+      "description": "Brand - US Polo Assn Type - T-Shirt Fabric - Cotton/Knit Sleeves - Half Sleeves Neck - Polo Neck Style - Pullover Closure - Front Buttons Pattern - Striped Occasion - Casual Wear Fit - Regular Fit",
+      "imageUrl": "images/us-polo-black-t-shirt.jpg",
+      "thumbnailUrl": "images/us-polo-black-t-shirt.jpg",
+      "imgAltText": "US Polo Assn Half Sleeves T-Shirt Striped",
+      "maxRetailPrice": 1299,
+      "category": "Kids",
+      "discountApplicable": 25,
+      "added": "7/16/2023",
+      "quantity": 10,
+      "bestSellerRanking": 5,
+      "featured": true,
+      "reviews": [
+        {
+          "id": 1002,
+          "name": "Kevin",
+          "email": "k@l.com",
+          "phone": "97654663",
+          "comment": "amazing!",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "name": "The Right Cut",
+      "tagLine": "Moss green, Sky blue and pearl white Handloom khadi/ cotton mul Roller coaster dress For Girl",
+      "description": "Specifications Brand Name - The Right Cut Fabric - Handloom Khadi, (Lining - Mul) Neck - Round Neck Sleeves - Sleeves Length - Knee Length Fit - Comfort Occasion - Party & Casual Wear",
+      "imageUrl": "images/the-right-cut-dress.jpg",
+      "thumbnailUrl": "images/the-right-cut-dress.jpg",
+      "imgAltText": "The Right Cut Moss green dress",
+      "maxRetailPrice": 5040,
+      "category": "Kids",
+      "discountApplicable": 3,
+      "added": "7/16/2023",
+      "quantity": 10,
+      "bestSellerRanking": 5,
+      "featured": true,
+      "reviews": [
+        {
+          "id": 1002,
+          "name": "Kevin",
+          "email": "k@l.com",
+          "phone": "97654663",
+          "comment": "amazing!",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "name": "U.S. Polo Assn Half Sleeves",
+      "tagLine": "Cotton Colour Blocked T-Shirt Logo and Text Embroidery - Red",
+      "description": "Brand - US Polo Assn Type - T-Shirt Fabric - Cotton Sleeves - Half Sleeves Neck - Collar neck Neck Opening - Front Buttons Print - Logo and Text Embroidery Surface Ornamentation - Colour Blocked Ocassion - Casual Wear Fit - Regular",
+      "imageUrl": "images/us-polo-t-shirt.jpg",
+      "thumbnailUrl": "images/us-polo-t-shirt.jpg",
+      "imgAltText": "U.S. Polo Assn Half Sleeves T-Shirt",
+      "maxRetailPrice": 1699,
+      "category": "Kids",
+      "discountApplicable": 25,
+      "added": "7/16/2023",
+      "quantity": 10,
+      "bestSellerRanking": 5,
+      "featured": true,
+      "reviews": [
+        {
+          "id": 1002,
+          "name": "Kevin",
+          "email": "k@l.com",
+          "phone": "97654663",
+          "comment": "amazing!",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "name": "FASHOR",
+      "tagLine": "Solid Floral Hand Embroidered A-line Maxi Dress - Off White (Set of 2)",
+      "description": "A-Line Maxi Dress Floral Hand Embroidered Yoke Comes with Matching Inner",
+      "imageUrl": "images/fashor-maxi.jpg",
+      "thumbnailUrl": "images/fashor-maxi.jpg",
+      "imgAltText": "FASHOR Solid Floral Hand Embroidered A-line Maxi Dress",
+      "maxRetailPrice": 5199,
+      "category": "Women",
+      "discountApplicable": 53,
+      "added": "7/16/2023",
+      "quantity": 10,
+      "bestSellerRanking": 5,
+      "featured": true,
+      "reviews": [
+        {
+          "id": 1002,
+          "name": "Kevin",
+          "email": "k@l.com",
+          "phone": "97654663",
+          "comment": "amazing!",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "name": "Tommy Hilfiger",
+      "tagLine": "Cotton Half Sleeves Text Embroidery Slim Fit T-Shirt - Green",
+      "description": "Brand - Tommy Hilfiger Type - T-Shirt Fabric - Cotton/Knit Sleeves - Half Sleeves Neck - Round Neck Pattern - Text Embroidery Occasion - Casual Wear Fit - Regular Fit",
+      "imageUrl": "images/tommy-hilfiger-t-shirt.jpg",
+      "thumbnailUrl": "images/tommy-hilfiger-t-shirt.jpg",
+      "imgAltText": "Tommy Hilfiger Cotton Half Sleeves Text Embroidery Slim Fit T-Shirt - Green",
+      "maxRetailPrice": 2399,
+      "category": "Kids",
+      "discountApplicable": 20,
+      "added": "7/16/2023",
+      "quantity": 10,
+      "bestSellerRanking": 5,
+      "featured": true,
+      "reviews": [
+        {
+          "id": 1002,
+          "name": "Kevin",
+          "email": "k@l.com",
+          "phone": "97654663",
+          "comment": "amazing!",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "name": "UCB",
+      "tagLine": "Full Sleeves Sweatshirt Text Print - Blue",
+      "description": "Brand - UCB Type - Sweatshirt Fabric - Knit Sleeves - Full Neck - Round Style - Pullover Print - Text Occasion - Casual Wear Fit - Regular Fit",
+      "imageUrl": "images/ucb-t-shirt.jpg",
+      "thumbnailUrl": "images/ucb-t-shirt.jpg",
+      "imgAltText": "UCB Full Sleeves Sweatshirt Text Print - Blue",
+      "maxRetailPrice": 1999,
+      "category": "Kids",
+      "discountApplicable": 35,
+      "added": "7/16/2023",
+      "quantity": 10,
+      "bestSellerRanking": 5,
+      "featured": true,
+      "reviews": [
+        {
+          "id": 1002,
+          "name": "Kevin",
+          "email": "k@l.com",
+          "phone": "97654663",
+          "comment": "amazing!",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "name": "Babyhug Cotton",
+      "tagLine": "Full Sleeves Kurta & Dhoti Bandhani Print - White",
+      "description": "Brand - Babyhug Type - Dhoti Kurta Set Fabric - Cotton Sleeves - Full Neck - Mandarin Collar Style - Pullover Neck Opening - Front buttons Bottom Length - Full Pattern - Striped Occasion - Ethnic Wear Fit - Regular fit",
+      "imageUrl": "images/babyhug-dhothi-dress.jpg",
+      "thumbnailUrl": "images/babyhug-dhothi-dress.jpg",
+      "imgAltText": "Babyhug Cotton Full Sleeves Kurta & Dhoti Bandhani Print - White",
+      "maxRetailPrice": 1999,
+      "category": "Kids",
+      "discountApplicable": 35,
+      "added": "7/16/2023",
+      "quantity": 10,
+      "bestSellerRanking": 5,
+      "featured": true,
+      "reviews": [
+        {
+          "id": 1002,
+          "name": "Kevin",
+          "email": "k@l.com",
+          "phone": "97654663",
+          "comment": "amazing!",
+          "rating": 4
+        }
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": 100,
+      "name": "All"
+    },
+    {
+      "id": 101,
+      "name": "Men"
+    },
+    {
+      "id": 102,
+      "name": "Women"
+    },
+    {
+      "id": 103,
+      "name": "Kids"
+    }
+  ],
+  "contactData": {
+    "address": "280 ParK Avenue Z,Cross cut Complex, Bangalore, India",
+    "phone": [
+      "(91) 987 654 3210",
+      "(91) 987 654 3211"
+    ],
+    "email": "contact@sparkclothing.com"
+  },
+  "getInTouchData": [
+    {
+      "name": "Arun",
+      "email": "arun@gmail.com",
+      "message": "Awesome website",
+      "id": 1
+    }
+  ]
+}

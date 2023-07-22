@@ -1,0 +1,59 @@
+.carousel{
+  background-image: linear-gradient(to right, #fff3cd96 ,#dee2e6, #dee2e694 70%, #fff3cdc4);
+}
+.carousel .carousel-item img{
+  width: 80%;
+  margin-left: 10%;
+}
+.carousel-caption a {
+  background: black;
+  color: white;
+  padding: 12px;
+  text-decoration: none;
+  border: 1px solid #000;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.carousel-caption p{
+  font-size: 18px;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 20px;
+}
+.carousel-caption {
+  right: 10%;
+  left: 10%;
+  background-color: #fff3cd;
+  bottom: 0px;
+  padding-bottom: 22px;
+  padding-top: 5px;
+  text-align: left;
+  padding-left: 5px;
+}
+
+.carousel-indicators {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+.carousel-caption {
+  margin-right: 10%;
+  width: 38%;
+  right: 0;
+  left: auto;
+}
+.carousel .carousel-item img{
+  right: auto;
+  left: 0;
+  width: 25%;
+  margin-left: 10%
+}
+.carousel-indicators {
+  display: flex;
+}
+.carousel-caption{
+  background-color: transparent;
+  top: 20%;
+}
+}
