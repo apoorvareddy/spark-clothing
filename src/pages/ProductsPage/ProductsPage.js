@@ -54,6 +54,7 @@ const ProductsPage = () => {
       .then((response) => response.json())
       .then((data) => {
         setProducts(data);
+        console.log(data)
       })
       .catch((err) => {
         console.log(err);

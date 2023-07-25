@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 
 const Review = () => {
+  const params = useParams();
+  const [reviews, setReviews] = useState([]);
   const [show, setShow] = useState(false);
+  const [productDescription, setProductDescription] = useState({});
   const [formState, setFormState] = useState({
     name: '',
     email: '',
@@ -12,34 +16,53 @@ const Review = () => {
     rating: '',
     comment: ''
   });
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    console.log(formState);
-    setFormState({ ...formState });
 
-    await fetch('http://localhost:5000/products/1', {
-      method: 'patch',
-      crossDomain: true,
-      xhrFields: {
-        withCredentials: true
-      },
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        Authorization: ''
-      },
-      body: JSON.stringify({ formdata: formState }),
-      credentials: 'include'
-
-    })
-      .then(res => res.json())
-      .then(res => {
-        return res
+  useEffect(() => {
+    fetch(`http://localhost:5000/products/${params.productId}`)
+      .then((res) => res.json())
+      .then((res) => {
+        setProductDescription(res);
+        setReviews(res.reviews);
+        // updatedReviews = res.reviews;
       })
-      .catch(err => console.error(err))
+      .catch((err) => console.error(err));
+  }, [formState]);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const reviewCount = productDescription.reviews.length;
+    console.log('reviewCount' + reviewCount);
+    let updatedId;
+    reviewCount > 0
+      ? updatedId = productDescription.reviews[reviewCount - 1].id + 1
+      : updatedId = 100
+
+    console.log(updatedId);
+    const updatedFormState = {
+      ...formState,
+      id: updatedId
+    }
+    setFormState({ ...updatedFormState });
+
+    const updatedProductDetails = { ...productDescription };
+    updatedProductDetails.reviews.push(updatedFormState);
+
+    fetch(`http://localhost:5000/products/${params.productId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(updatedProductDetails)
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setProductDescription(res);
+      })
+      .catch((err) => console.error(err))
+      .finally(() => {
+      })
   };
 
   const handleChange = (event) => {
@@ -56,6 +79,11 @@ const Review = () => {
       <Button variant="primary" onClick={handleShow}>
         Write a Review
       </Button>
+      {reviews.map((review) => {
+        return (
+          <div key={review.id}>{review.name}</div>
+        )
+      })}
 
       <Modal show={show} onHide={handleClose}>
         <Form onSubmit={handleSubmit}>

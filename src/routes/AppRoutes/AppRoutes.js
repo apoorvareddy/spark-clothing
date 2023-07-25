@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import AboutUsPage from '../../pages/AboutUsPage/AboutUsPage';
+import History from '../../pages/AboutUsPage/History/History';
 import ContactUsPage from '../../pages/ContactUsPage/ContactUsPage';
 import HomePage from '../../pages/HomePage/HomePage';
 import PageNotFoundPage from '../../pages/PageNotFoundPage/PageNotFoundPage';
@@ -13,7 +14,9 @@ const AppRoutes = () => {
       <Route path="/products" element={<ProductsPage />} />
       <Route path='products/:productId' element={<ProductDetailsPage />} />
       <Route path="/contact-us" element={<ContactUsPage />} />
-      <Route path="/about-us" element={<AboutUsPage />} />
+      <Route path="/about-us" element={<AboutUsPage />} >
+        <Route path='history' element={<History />} />
+      </Route>
       <Route path='*' element={<PageNotFoundPage />} />
     </Routes>
   );

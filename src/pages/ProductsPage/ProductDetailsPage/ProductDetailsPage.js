@@ -12,7 +12,6 @@ import Review from './Review/Review';
 const ProductDetailsPage = () => {
   const params = useParams();
   const [quantityTicker, setQuantityTicker] = useState(1);
-  console.log(setQuantityTicker);
   const [productDetails, setProductDetails] = useState([]);
 
   useEffect(() => {
@@ -64,7 +63,7 @@ const ProductDetailsPage = () => {
             </ButtonGroup>
             <Button variant="primary">Add to Cart</Button>
           </div>
-          <Review id={productDetails.id} />
+          <Review />
         </Col>
       </Row>
     </Container>

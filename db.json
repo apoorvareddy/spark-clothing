@@ -15,16 +15,7 @@
       "quantity": 30,
       "bestSellerRanking": 2,
       "featured": true,
-      "reviews": [
-        {
-          "id": 100,
-          "name": "Apoorva",
-          "email": "apoorva@gmail.com",
-          "phone": "9876543210",
-          "comment": "amazing!",
-          "rating": 4
-        }
-      ]
+      "reviews": [ ]
     },
     {
       "id": 2,
@@ -41,7 +32,24 @@
       "quantity": 5,
       "bestSellerRanking": 5,
       "featured": true,
-      "reviews": []
+      "reviews": [
+        {
+          "name": "Bharath",
+          "email": "bkunta2304@gmail.com",
+          "phone": "1234567890",
+          "rating": "3",
+          "comment": "ghhgh",
+          "id": 100
+        },
+        {
+          "name": "Apoorva",
+          "email": "apoorvareddy77@gmail.com",
+          "phone": "Ddfad",
+          "rating": "3",
+          "comment": "adf",
+          "id": 101
+        }
+      ]
     },
     {
       "id": 3,
@@ -774,7 +782,7 @@
       "id": 32,
       "name": "Babyhug Cotton",
       "tagLine": "Full Sleeves Kurta & Dhoti Bandhani Print - White",
-      "description": "Brand - Babyhug Type - Dhoti Kurta Set Fabric - Cotton Sleeves - Full Neck - Mandarin Collar Style - Pullover Neck Opening - Front buttons Bottom Length - Full Pattern - Striped Occasion - Ethnic Wear Fit - Regular fit",
+      "description": "{Brand - Babyhug Type}\n - Dhoti Kurta Set Fabric - Cotton Sleeves - Full Neck - Mandarin Collar Style - Pullover Neck Opening - Front buttons Bottom Length - Full Pattern - Striped Occasion - Ethnic Wear Fit - Regular fit",
       "imageUrl": "images/babyhug-dhothi-dress.jpg",
       "thumbnailUrl": "images/babyhug-dhothi-dress.jpg",
       "imgAltText": "Babyhug Cotton Full Sleeves Kurta & Dhoti Bandhani Print - White",
