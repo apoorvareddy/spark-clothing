@@ -1,14 +1,12 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
+import PropTypes from 'prop-types';
 
-const Review = () => {
-  const params = useParams();
-  const [reviews, setReviews] = useState([]);
+const Review = ({ onSubmit }) => {
   const [show, setShow] = useState(false);
-  const [productDescription, setProductDescription] = useState({});
+
   const [formState, setFormState] = useState({
     name: '',
     email: '',
@@ -16,58 +14,21 @@ const Review = () => {
     rating: '',
     comment: ''
   });
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  useEffect(() => {
-    fetch(`http://localhost:5000/products/${params.productId}`)
-      .then((res) => res.json())
-      .then((res) => {
-        setProductDescription(res);
-        setReviews(res.reviews);
-        // updatedReviews = res.reviews;
-      })
-      .catch((err) => console.error(err));
-  }, [formState]);
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    const reviewCount = productDescription.reviews.length;
-    console.log('reviewCount' + reviewCount);
-    let updatedId;
-    reviewCount > 0
-      ? updatedId = productDescription.reviews[reviewCount - 1].id + 1
-      : updatedId = 100
-
-    console.log(updatedId);
-    const updatedFormState = {
+    setFormState({
       ...formState,
-      id: updatedId
-    }
-    setFormState({ ...updatedFormState });
-
-    const updatedProductDetails = { ...productDescription };
-    updatedProductDetails.reviews.push(updatedFormState);
-
-    fetch(`http://localhost:5000/products/${params.productId}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(updatedProductDetails)
+      id: Math.random()
     })
-      .then((res) => res.json())
-      .then((res) => {
-        setProductDescription(res);
-      })
-      .catch((err) => console.error(err))
-      .finally(() => {
-      })
+
+    onSubmit(formState)
   };
 
   const handleChange = (event) => {
-    console.log(event.target.value);
-    console.log(event.target.name);
     setFormState({
       ...formState,
       [event.target.name]: event.target.value
@@ -79,11 +40,6 @@ const Review = () => {
       <Button variant="primary" onClick={handleShow}>
         Write a Review
       </Button>
-      {reviews.map((review) => {
-        return (
-          <div key={review.id}>{review.name}</div>
-        )
-      })}
 
       <Modal show={show} onHide={handleClose}>
         <Form onSubmit={handleSubmit}>
@@ -157,5 +113,9 @@ const Review = () => {
     </>
   );
 };
+
+Review.propTypes = {
+  onSubmit: PropTypes.func
+}
 
 export default Review;

@@ -10,14 +10,16 @@ import './ProductDetailsPage.css'
 import Review from './Review/Review';
 
 const ProductDetailsPage = () => {
-  const params = useParams();
+  const { productId } = useParams();
+  console.log(productId);
   const [quantityTicker, setQuantityTicker] = useState(1);
   const [productDetails, setProductDetails] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/products/${params.productId}`)
+    fetch(`http://localhost:5000/products/${productId}`)
       .then((response) => response.json())
       .then((data) => {
+        console.log(data)
         setProductDetails(data);
       })
       .catch((err) => {
@@ -26,7 +28,7 @@ const ProductDetailsPage = () => {
       .finally(() => {
         console.log('API call completed');
       });
-  }, []);
+  }, [productId]);
 
   const handleDecrement = () => {
     if (quantityTicker > 1) {
@@ -38,6 +40,34 @@ const ProductDetailsPage = () => {
     if (quantityTicker < productDetails.quantity) {
       setQuantityTicker(quantityTicker + 1);
     }
+  }
+
+  const handleFormSubmit = async (formState) => {
+    console.log(formState);
+    productDetails.reviews.push(formState)
+    await fetch(`http://localhost:5000/products/${productId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(productDetails)
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setProductDetails(res);
+      })
+      .catch((err) => console.error(err))
+      .finally(() => {
+      })
+  }
+  const isValidProductId = (productId) => {
+    if (productDetails.id) {
+      return true
+    } else return false
+  }
+
+  if (!productId || !isValidProductId(productId)) {
+    return <div>Invalid Product, The entered Product is not listed.</div>
   }
 
   return (
@@ -63,7 +93,18 @@ const ProductDetailsPage = () => {
             </ButtonGroup>
             <Button variant="primary">Add to Cart</Button>
           </div>
-          <Review />
+
+          <Review onSubmit={handleFormSubmit} />
+          {/* <h1>{productDetails.reviews.name}</h1> */}
+          {productDetails.reviews?.map((review) => {
+            return (
+              <div key={review.id}>
+                <span>{review.rating}</span>
+                <span>{review.name}</span>
+                <span>{review.comment}</span>
+              </div>
+            )
+          })}
         </Col>
       </Row>
     </Container>

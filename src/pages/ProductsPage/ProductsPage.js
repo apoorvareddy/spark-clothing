@@ -12,11 +12,17 @@ const ProductsPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const category = searchParams.get('category');
   const order = searchParams.get('order');
-  console.log('max' + order);
+  const sort = searchParams.get('sort');
+
   const dropdownOptions = [
     { key: 'asc', value: 'Price: Low to High' },
     { key: 'desc', value: 'Price: High to Low' }
   ];
+
+  const validCategories = ['Men', 'Women', 'Kids'];
+  const validSortCategory = ['maxRetailPrice'];
+  const validSortOrder = ['asc', 'desc'];
+  const supportedParameters = ['category', 'sort', 'order'];
 
   const [selected, setSelected] = useState({});
 
@@ -64,6 +70,24 @@ const ProductsPage = () => {
         setSelected(order && dropdownOptions.find(obj => obj.key === order));
       });
   }, [category, order]);
+
+  if (category && (!category || !validCategories.includes(category))) {
+    return <div>Invalid category, we can&apos;t find the {category} at this moment</div>
+  }
+
+  if (sort && (!sort || !validSortCategory.includes(sort))) {
+    return <div>You are trying invalid sort option.</div>
+  }
+
+  if (order && (!order || !validSortOrder.includes(order))) {
+    return <div>You are trying to fetch the items in invalid order</div>
+  }
+
+  for (const [param] of searchParams.entries()) {
+    if (!supportedParameters.includes(param)) {
+      return <div> ERROR: {param} parameter is not supported</div>
+    }
+  }
 
   return (
     <>

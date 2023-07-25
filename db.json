@@ -15,7 +15,7 @@
       "quantity": 30,
       "bestSellerRanking": 2,
       "featured": true,
-      "reviews": [ ]
+      "reviews": []
     },
     {
       "id": 2,
@@ -48,6 +48,22 @@
           "rating": "3",
           "comment": "adf",
           "id": 101
+        },
+        {
+          "name": "Apoorva",
+          "email": "a@b.com",
+          "phone": "2235435423",
+          "rating": "4",
+          "comment": "good",
+          "id": 0.8683560024495516
+        },
+        {
+          "name": "Sayansh",
+          "email": "s@ab.com",
+          "phone": "1234567890",
+          "rating": "3",
+          "comment": "good",
+          "id": 0.9109516033783476
         }
       ]
     },
