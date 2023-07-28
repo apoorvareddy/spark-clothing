@@ -1,0 +1,11 @@
+.modal .modal-body > div {
+  display: flex;
+}
+.modal .modal-body > div label{
+  width: 20%;
+  margin-bottom: 10px;
+}
+.modal .modal-body > div input, .modal .modal-body > div textarea{
+  width: 70%;
+  margin-bottom: 10px;
+}

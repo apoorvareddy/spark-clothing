@@ -1,41 +1,42 @@
 import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Modal from 'react-bootstrap/Modal';
+import { useForm } from 'react-hook-form';
+import { Button, Form, Modal } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import StarRating from 'react-star-ratings';
+import './Review.css'
 
-const Review = ({ onSubmit }) => {
+const Review = ({ onFormSubmit }) => {
   const [show, setShow] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const [ratingValue, setRatingValue] = useState(0);
 
-  const [formState, setFormState] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    rating: '',
-    comment: ''
-  });
-
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    setIsSuccess(false);
+    reset();
+    setRatingValue(0);
+  }
   const handleShow = () => setShow(true);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    setFormState({
+  const onSubmit = async (formState) => {
+    console.log({ ...formState, rating: ratingValue });
+    onFormSubmit({
       ...formState,
+      rating: ratingValue,
       id: Math.random()
     })
-
-    await onSubmit(formState);
     setIsSuccess(true);
-  };
 
-  const handleChange = (event) => {
-    setFormState({
-      ...formState,
-      [event.target.name]: event.target.value
-    });
-  };
+    const timer = setTimeout(handleClose, 5000);
+    return () => {
+      clearTimeout(timer);
+    }
+  }
+
+  const handleRatingChange = (newRating) => {
+    setRatingValue(newRating);
+  }
 
   return (
     <>
@@ -44,65 +45,67 @@ const Review = ({ onSubmit }) => {
       </Button>
 
       <Modal show={show} onHide={handleClose}>
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit(onSubmit)}>
           <Modal.Header closeButton>
             <Modal.Title>Write a Review</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Form.Group className="mb-3" controlId="reviewName">
+            <Form.Group controlId="name">
               <Form.Label>Name</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter Name"
-                name="name"
-                value={formState.name}
-                onChange={handleChange}
+                {...register('name', { required: 'Name is required' })}
               />
+              {errors.name && <Form.Text className='text-danger'>{errors.name.message}</Form.Text>}
             </Form.Group>
-            <Form.Group className="mb-3" controlId="reviewEmail">
-              <Form.Label className="col-12 col-md-4">Email address</Form.Label>
+            <Form.Group controlId="email">
+              <Form.Label>Email</Form.Label>
               <Form.Control
                 type="email"
-                placeholder="Enter email"
-                name="email"
-                value={formState.email}
-                onChange={handleChange}
+                {...register('email', {
+                  required: 'Email is required',
+                  pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                    message: 'Invalid email address'
+                  }
+                })}
               />
+              {errors.email && <Form.Text className='text-danger'>{errors.email.message}</Form.Text>}
             </Form.Group>
-            <Form.Group className="mb-3" controlId="reviewPhone">
-              <Form.Label className="col-12 col-md-4">Phone</Form.Label>
+            <Form.Group controlId="phone">
+              <Form.Label>Phone</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter Phone Number"
-                name="phone"
-                value={formState.phone}
-                onChange={handleChange}
+                {...register('phone', {
+                  required: 'Phone number is required',
+                  pattern: {
+                    value: /^\d{10}$/,
+                    message: 'Invalid phone number'
+                  }
+                })}
               />
+              {errors.phone && <Form.Text className='text-danger'>{errors.phone.message}</Form.Text>}
             </Form.Group>
-            <Form.Select
-              aria-label="Default select example"
-              name="rating"
-              value={formState.rating}
-              onChange={handleChange}
-            >
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-              <option value="4">Four</option>
-              <option value="5">Five</option>
-            </Form.Select>
-            <Form.Group className="mb-3" controlId="reviewComment">
-              <Form.Label className="col-12 col-md-4">
-                Example textarea
-              </Form.Label>
+            <div>
+              <Form.Label>Rating</Form.Label>
+              <StarRating
+                rating={ratingValue}
+                starRatedColor='gold'
+                changeRating={handleRatingChange}
+                numberOfStars={5}
+                starDimension='24px'
+                starSpacing='2px'
+              />
+              {errors.rating && <Form.Text className='text-danger'>{errors.rating.message}</Form.Text>}
+            </div>
+            <Form.Group className="mb-3" controlId="comment">
+              <Form.Label>Review</Form.Label>
               <Form.Control
-                className="col-12 col-md-8"
                 as="textarea"
                 rows={3}
-                name="comment"
-                value={formState.comment}
-                onChange={handleChange}
+                {...register('comment', { required: 'Message is required' })}
               />
+              {errors.comment && <Form.Text className='text-danger'>{errors.comment.message}</Form.Text>}
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>
@@ -118,7 +121,7 @@ const Review = ({ onSubmit }) => {
 };
 
 Review.propTypes = {
-  onSubmit: PropTypes.func
+  onFormSubmit: PropTypes.func
 }
 
 export default Review;

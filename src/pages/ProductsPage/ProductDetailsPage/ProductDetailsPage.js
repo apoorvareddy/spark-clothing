@@ -90,7 +90,7 @@ const ProductDetailsPage = () => {
             <Button variant="primary">Add to Cart</Button>
           </div>
 
-          <Review onSubmit={handleFormSubmit} />
+          <Review onFormSubmit={handleFormSubmit} />
 
           {productDetails.reviews?.map((review, index) => {
             return (

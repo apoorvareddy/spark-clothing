@@ -7,7 +7,9 @@ const App = () => {
   return (
     <HashRouter>
       <Header />
-      <AppRoutes />
+      <div className='main-container'>
+        <AppRoutes />
+      </div>
       <Footer />
     </HashRouter>
   );
