@@ -1,32 +1,29 @@
 import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Image from 'react-bootstrap/Image';
-import Button from 'react-bootstrap/Button';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import { Col, Container, Row, Image, Button, ButtonGroup } from 'react-bootstrap';
 import './ProductDetailsPage.css'
 import Review from './Review/Review';
 
 const ProductDetailsPage = () => {
   const { productId } = useParams();
-  console.log(productId);
   const [quantityTicker, setQuantityTicker] = useState(1);
-  const [productDetails, setProductDetails] = useState([]);
+  const [productDetails, setProductDetails] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetch(`http://localhost:5000/products/${productId}`)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data)
-        setProductDetails(data);
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Unable to fetch');
+        }
+        return response.json();
+      })
+      .then((product) => {
+        // console.log(product);
+        setProductDetails(product);
       })
       .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => {
-        console.log('API call completed');
+        setError(err.message || 'Something went wrong');
       });
   }, [productId]);
 
@@ -56,18 +53,17 @@ const ProductDetailsPage = () => {
       .then((res) => {
         setProductDetails(res);
       })
-      .catch((err) => console.error(err))
+      .catch((err) => console.log('error in patch' + err))
       .finally(() => {
       })
   }
-  const isValidProductId = (productId) => {
-    if (productDetails.id) {
-      return true
-    } else return false
+
+  if (error) {
+    return <div>Invalid Product, The entered Product is not listed.</div>
   }
 
-  if (!productId || !isValidProductId(productId)) {
-    return <div>Invalid Product, The entered Product is not listed.</div>
+  if (!productDetails) {
+    return <div className="spinner-border text-success" role="status" />
   }
 
   return (
@@ -95,10 +91,10 @@ const ProductDetailsPage = () => {
           </div>
 
           <Review onSubmit={handleFormSubmit} />
-          {/* <h1>{productDetails.reviews.name}</h1> */}
-          {productDetails.reviews?.map((review) => {
+
+          {productDetails.reviews?.map((review, index) => {
             return (
-              <div key={review.id}>
+              <div key={index}>
                 <span>{review.rating}</span>
                 <span>{review.name}</span>
                 <span>{review.comment}</span>

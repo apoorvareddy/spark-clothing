@@ -18,7 +18,7 @@ const SideNav = () => {
       });
   }, []);
   return (
-    <div className='col-12 col-sm-3'>
+    <div className='col-12 col-sm-2'>
       <Nav className="flex-column">
         {
           categories.map((category) => {

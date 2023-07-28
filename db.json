@@ -15,7 +15,15 @@
       "quantity": 30,
       "bestSellerRanking": 2,
       "featured": true,
-      "reviews": []
+      "reviews": [
+        {
+          "name": "Apoorva",
+          "email": "apoorvareddy77@gmail.com",
+          "phone": "6758493022",
+          "rating": "4",
+          "comment": "Good One"
+        }
+      ]
     },
     {
       "id": 2,
@@ -64,6 +72,13 @@
           "rating": "3",
           "comment": "good",
           "id": 0.9109516033783476
+        },
+        {
+          "name": "abc",
+          "email": "abc@gmail.com",
+          "phone": "1230984567",
+          "rating": "4",
+          "comment": "ok"
         }
       ]
     },
@@ -90,6 +105,21 @@
           "phone": "97654663",
           "comment": "amazing!",
           "rating": 4
+        },
+        {
+          "name": "Apoorva",
+          "email": "apoorvareddy77@gmail.com",
+          "phone": "1234567889",
+          "rating": "3",
+          "comment": "Nice Shirt"
+        },
+        {
+          "name": "Sayansh",
+          "email": "A@B.com",
+          "phone": "09818989832",
+          "rating": "4",
+          "comment": "Wow",
+          "id": 0.3441765778484316
         }
       ]
     },
@@ -853,6 +883,18 @@
       "email": "arun@gmail.com",
       "message": "Awesome website",
       "id": 1
+    },
+    {
+      "name": "Apoorva",
+      "email": "apoorvareddy77@gmail.com",
+      "message": "Good Shopping Website",
+      "id": 2
+    },
+    {
+      "name": "Sayansh",
+      "email": "a@b.com",
+      "message": "Wow",
+      "id": 3
     }
   ]
 }

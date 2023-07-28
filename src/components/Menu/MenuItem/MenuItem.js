@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const MenuItem = ({ title, path, iconSrc }) => {
+const MenuItem = ({ title, path, iconSrc, showIcons }) => {
   return (
     <li className="nav-item">
       <NavLink className="nav-link" aria-current='page' to={path}>
-        <img src={iconSrc} alt='menu item icon' style={{ width: '30px', height: '24px', paddingRight: '5px' }}/>{title}
+        { showIcons && <FontAwesomeIcon icon={iconSrc} style={{ paddingRight: '5px' }} /> }
+        {title}
       </NavLink>
     </li>
   )
@@ -14,7 +16,8 @@ const MenuItem = ({ title, path, iconSrc }) => {
 MenuItem.propTypes = {
   path: PropTypes.string,
   title: PropTypes.string,
-  iconSrc: PropTypes.string
+  iconSrc: PropTypes.object,
+  showIcons: PropTypes.bool
 }
 
 export default MenuItem;

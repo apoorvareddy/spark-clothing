@@ -1,9 +1,6 @@
 import { useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import Dropdown from 'react-bootstrap/Dropdown';
+import { Container, Row, DropdownButton, Dropdown } from 'react-bootstrap';
 import Product from '../../components/Product/Product';
 import SideNav from './SideNav/SideNav';
 
@@ -53,47 +50,46 @@ const ProductsPage = () => {
     break;
   }
 
-  console.log(apiUrl);
+  // console.log(apiUrl);
 
   useEffect(() => {
     fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
         setProducts(data);
-        console.log(data)
+        // console.log(data)
       })
       .catch((err) => {
         console.log(err);
       })
       .finally(() => {
-        console.log('API call completed');
         setSelected(order && dropdownOptions.find(obj => obj.key === order));
       });
   }, [category, order]);
 
   if (category && (!category || !validCategories.includes(category))) {
-    return <div>Invalid category, we can&apos;t find the {category} at this moment</div>
+    return <h4>We couldn&apos;t find any matches! Please check the spelling or try searching something else</h4>
   }
 
   if (sort && (!sort || !validSortCategory.includes(sort))) {
-    return <div>You are trying invalid sort option.</div>
+    return <h4>We couldn&apos;t find any matches! Please check the spelling or try searching something else</h4>
   }
 
   if (order && (!order || !validSortOrder.includes(order))) {
-    return <div>You are trying to fetch the items in invalid order</div>
+    return <h4>We couldn&apos;t find any matches! Please check the spelling or try searching something else</h4>
   }
 
   for (const [param] of searchParams.entries()) {
     if (!supportedParameters.includes(param)) {
-      return <div> ERROR: {param} parameter is not supported</div>
+      return <h4>We couldn&apos;t find any matches! Please check the spelling or try searching something else</h4>
     }
   }
 
   return (
-    <>
+    <Container>
       <Row>
         <SideNav />
-        <div className="col-12 col-sm-9">
+        <div className="col-12 col-sm-10">
           <DropdownButton
             id="dropdown-menu-align-right"
             onSelect={handleSelect}
@@ -107,25 +103,25 @@ const ProductsPage = () => {
               );
             })}
           </DropdownButton>
-          <Container style={{ marginTop: '30px' }}>
-            <Row>
-              {products.map((product, i) => {
-                return (
-                  <Product
-                    key={i}
-                    imageUrl={product.imageUrl}
-                    id={product.id}
-                    name={product.name}
-                    maxRetailPrice={product.maxRetailPrice}
-                    tagLine={product.tagLine}
-                  />
-                );
-              })}
-            </Row>
-          </Container>
+
+          <Row>
+            {products.map((product, i) => {
+              return (
+                <Product
+                  key={i}
+                  imageUrl={product.imageUrl}
+                  id={product.id}
+                  name={product.name}
+                  maxRetailPrice={product.maxRetailPrice}
+                  tagLine={product.tagLine}
+                />
+              );
+            })}
+          </Row>
+
         </div>
       </Row>
-    </>
+    </Container>
   );
 };
 

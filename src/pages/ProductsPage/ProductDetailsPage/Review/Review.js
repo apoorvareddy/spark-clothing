@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 
 const Review = ({ onSubmit }) => {
   const [show, setShow] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const [formState, setFormState] = useState({
     name: '',
@@ -18,14 +19,15 @@ const Review = ({ onSubmit }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     setFormState({
       ...formState,
       id: Math.random()
     })
 
-    onSubmit(formState)
+    await onSubmit(formState);
+    setIsSuccess(true);
   };
 
   const handleChange = (event) => {
@@ -109,6 +111,7 @@ const Review = ({ onSubmit }) => {
             </Button>
           </Modal.Footer>
         </Form>
+        {isSuccess && <p className='text-success text-center'>Review saved successfully!</p>}
       </Modal>
     </>
   );
