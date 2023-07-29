@@ -32,7 +32,16 @@
       "quantity": 5,
       "bestSellerRanking": 5,
       "featured": true,
-      "reviews": []
+      "reviews": [
+        {
+          "name": "Apoorva",
+          "email": "apoorvareddy77@gmail.com",
+          "phone": "2235435423",
+          "comment": "Good",
+          "rating": 3,
+          "id": 0.3564947553126516
+        }
+      ]
     },
     {
       "id": 3,
@@ -832,14 +841,8 @@
     {
       "name": "Apoorva",
       "email": "apoorvareddy77@gmail.com",
-      "message": "Good Shopping Website",
+      "message": "Good One",
       "id": 2
-    },
-    {
-      "name": "Sayansh",
-      "email": "a@b.com",
-      "message": "Wow",
-      "id": 3
     }
   ]
 }

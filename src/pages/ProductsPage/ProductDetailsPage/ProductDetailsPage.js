@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { Col, Container, Row, Image, Button, ButtonGroup } from 'react-bootstrap';
 import './ProductDetailsPage.css'
 import Review from './Review/Review';
+import Title from '../../../components/Title/Title';
 
 const ProductDetailsPage = () => {
   const { productId } = useParams();
@@ -68,6 +69,7 @@ const ProductDetailsPage = () => {
 
   return (
     <Container>
+      <Title pageTitle='Product Details' />
       <Row>
         <Col xs={12}>
           <Link to='/products'>Back to Products</Link>

@@ -7,6 +7,7 @@ import {
   faCircleDollarToSlot,
   faTruckFast
 } from '@fortawesome/free-solid-svg-icons';
+import Title from '../../components/Title/Title';
 
 const HomePage = () => {
   const promisingServices = [
@@ -28,6 +29,7 @@ const HomePage = () => {
   ];
   return (
     <>
+      <Title pageTitle='Home' />
       <LiveOffersCarousel />
       <LatestProducts />
       <div className="promising-services">

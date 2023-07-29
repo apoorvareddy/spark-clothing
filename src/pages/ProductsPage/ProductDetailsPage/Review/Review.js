@@ -21,7 +21,7 @@ const Review = ({ onFormSubmit }) => {
 
   const onSubmit = async (formState) => {
     console.log({ ...formState, rating: ratingValue });
-    onFormSubmit({
+    await onFormSubmit({
       ...formState,
       rating: ratingValue,
       id: Math.random()
@@ -113,8 +113,8 @@ const Review = ({ onFormSubmit }) => {
               Submit
             </Button>
           </Modal.Footer>
+          {isSuccess && <p className='text-success text-center'>Review saved successfully!</p>}
         </Form>
-        {isSuccess && <p className='text-success text-center'>Review saved successfully!</p>}
       </Modal>
     </>
   );

@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Alert } from 'react-bootstrap';
 import { useState } from 'react';
 
 const ContactForm = () => {
@@ -29,6 +29,9 @@ const ContactForm = () => {
       });
 
     reset();
+    setTimeout(() => {
+      setIsSuccess(false);
+    }, 5000);
   }
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
@@ -64,8 +67,8 @@ const ContactForm = () => {
         {errors.message && <Form.Text className='text-danger'>{errors.message.message}</Form.Text>}
       </Form.Group>
       <Button type='submit'>Submit</Button>
-      { isSuccess && <p className='text-success'>Message successfully submitted!</p> }
-      { isError && <p>Unable to submit your message, please try again.</p>}
+      { isSuccess && <Alert variant='success'>Message successfully submitted!</Alert> }
+      { isError && <Alert variant='danger'>Unable to submit your message, please try again.</Alert>}
     </Form>
   )
 }

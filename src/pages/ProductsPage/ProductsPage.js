@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { Container, Row, DropdownButton, Dropdown } from 'react-bootstrap';
 import Product from '../../components/Product/Product';
 import SideNav from './SideNav/SideNav';
+import Title from '../../components/Title/Title';
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
@@ -87,6 +88,7 @@ const ProductsPage = () => {
 
   return (
     <Container>
+      <Title pageTitle='Products' />
       <Row>
         <SideNav />
         <div className="col-12 col-sm-10">

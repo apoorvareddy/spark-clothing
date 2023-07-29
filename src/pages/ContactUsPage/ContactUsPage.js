@@ -3,6 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { faLocationDot, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ContactForm from './ContactForm/ContactForm';
+import Title from '../../components/Title/Title';
 
 const ContactUsPage = () => {
   const [contactDetails, setContactDetails] = useState({});
@@ -31,6 +32,7 @@ const ContactUsPage = () => {
   }
   return (
     <Container>
+      <Title pageTitle='Contact Us' />
       <Row>
         <Col xs={12} md={6} >
           <h1>Contact Us</h1>
