@@ -9,3 +9,13 @@
   width: 70%;
   margin-bottom: 10px;
 }
+.review-section button.write-a-review {
+  background-color: #2abfba;
+  border: 2px solid #2abfba;
+  margin-bottom: 20px
+}
+.review-section button.write-a-review:hover, .review-section button.write-a-review:active{
+  background-color:#fff;
+  border: 2px solid #2abfba;
+  color: #2abfba;
+}

@@ -5,11 +5,17 @@ import PropTypes from 'prop-types';
 import StarRating from 'react-star-ratings';
 import './Review.css'
 
-const Review = ({ onFormSubmit }) => {
+const Review = ({ onFormSubmit, existingEmails }) => {
   const [show, setShow] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState(false);
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const [ratingValue, setRatingValue] = useState(0);
+  const [submittedEmails, setSubmittedEmails] = useState(existingEmails);
+
+  const isEmailUnique = (email) => {
+    return !submittedEmails.includes(email);
+  }
 
   const handleClose = () => {
     setShow(false);
@@ -19,19 +25,26 @@ const Review = ({ onFormSubmit }) => {
   }
   const handleShow = () => setShow(true);
 
-  const onSubmit = async (formState) => {
-    console.log({ ...formState, rating: ratingValue });
-    await onFormSubmit({
-      ...formState,
-      rating: ratingValue,
-      id: Math.random()
-    })
-    setIsSuccess(true);
-
-    const timer = setTimeout(handleClose, 5000);
-    return () => {
-      clearTimeout(timer);
+  const onSubmit = async (formValue) => {
+    if (isEmailUnique(formValue.email)) {
+      await onFormSubmit({
+        ...formValue,
+        rating: ratingValue,
+        id: Math.random()
+      })
+      setSubmittedEmails((prevEmails) => [...prevEmails, formValue.email]);
+      setIsSuccess(true);
+      const timer = setTimeout(handleClose, 2000);
+      return () => {
+        clearTimeout(timer);
+      }
+    } else {
+      setIsError(true)
     }
+    setTimeout(() => {
+      setIsSuccess(false);
+      setIsError(false);
+    }, 3000);
   }
 
   const handleRatingChange = (newRating) => {
@@ -39,8 +52,8 @@ const Review = ({ onFormSubmit }) => {
   }
 
   return (
-    <>
-      <Button variant="primary" onClick={handleShow}>
+    <div className='review-section'>
+      <Button className='write-a-review' onClick={handleShow}>
         Write a Review
       </Button>
 
@@ -114,14 +127,16 @@ const Review = ({ onFormSubmit }) => {
             </Button>
           </Modal.Footer>
           {isSuccess && <p className='text-success text-center'>Review saved successfully!</p>}
+          {isError && <p className='text-warning text-center'>Email already used for a review.</p>}
         </Form>
       </Modal>
-    </>
+    </div>
   );
 };
 
 Review.propTypes = {
-  onFormSubmit: PropTypes.func
+  onFormSubmit: PropTypes.func,
+  existingEmails: PropTypes.array
 }
 
 export default Review;
