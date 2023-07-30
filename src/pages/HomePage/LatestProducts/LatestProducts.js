@@ -35,7 +35,8 @@ const LatestProducts = () => {
               id={product.id}
               name={product.name}
               maxRetailPrice={product.maxRetailPrice}
-              tagLine={product.tagLine} />
+              tagLine={product.tagLine}
+              discountApplicable={product.discountApplicable} />
           );
         })}
         <Button onClick={handleNavigate} className='view-all-button' variant='secondary'>View All</Button>

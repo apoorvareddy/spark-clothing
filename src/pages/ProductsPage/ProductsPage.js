@@ -116,6 +116,7 @@ const ProductsPage = () => {
                   name={product.name}
                   maxRetailPrice={product.maxRetailPrice}
                   tagLine={product.tagLine}
+                  discountApplicable={product.discountApplicable}
                 />
               );
             })}
