@@ -1,0 +1,11 @@
+button#dropdown-menu-align-right {
+  min-width: 160px;
+}
+
+.dropdown {
+  display: flex;
+  justify-content: flex-end;
+}
+.products-heading{
+  margin-top: 20px;
+}

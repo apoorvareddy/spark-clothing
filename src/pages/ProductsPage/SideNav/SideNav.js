@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
+import './SideNav.css'
 
 const SideNav = () => {
   const [categories, setCategories] = useState([]);
@@ -18,8 +19,9 @@ const SideNav = () => {
       });
   }, []);
   return (
-    <div className='col-12 col-sm-2'>
+    <div className='col-12 col-sm-2 side-nav'>
       <Nav className="flex-column">
+        <h4 className='sub-heading'>Categories</h4>
         {
           categories.map((category) => {
             return (

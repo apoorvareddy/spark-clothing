@@ -8,7 +8,27 @@ body {
   margin-top: 68px;
 }
 
+span.discount-price {
+  color: #333;
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 5px;
+}
+span.discount-percentage {
+ color: #ff3b00;
+  font-weight: bold;
+  margin-left: 5px;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.main-container {
+  min-height: 314px;
+}
+@media screen and (min-width: 992px) {
+  .main-container {
+    min-height: 462px;
+  }
+}
+

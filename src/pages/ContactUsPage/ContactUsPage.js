@@ -4,6 +4,7 @@ import { faLocationDot, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ContactForm from './ContactForm/ContactForm';
 import Title from '../../components/Title/Title';
+import './ContactUsPage.css';
 
 const ContactUsPage = () => {
   const [contactDetails, setContactDetails] = useState({});
@@ -31,7 +32,7 @@ const ContactUsPage = () => {
     return <div>Unable to fetch contact details, try after some time</div>
   }
   return (
-    <Container>
+    <Container className='contact-us'>
       <Title pageTitle='Contact Us' />
       <Row>
         <Col xs={12} md={6} >

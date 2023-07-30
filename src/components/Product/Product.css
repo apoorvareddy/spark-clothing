@@ -30,3 +30,8 @@
   width: 150px;
   margin-top: 20px;
 }
+.card-title a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+}

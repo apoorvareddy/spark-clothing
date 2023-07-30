@@ -1,15 +1,15 @@
 import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { Col, Container, Row, Image, Button, ButtonGroup } from 'react-bootstrap';
+import { Col, Container, Row, Image } from 'react-bootstrap';
 import Review from './Review/Review';
 import Title from '../../../components/Title/Title';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faAngleLeft, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faAngleLeft, faStar } from '@fortawesome/free-solid-svg-icons';
 import './ProductDetailsPage.css';
+import ProductInformation from './ProductInformation/ProductInformation';
 
 const ProductDetailsPage = () => {
   const { productId } = useParams();
-  const [quantityTicker, setQuantityTicker] = useState(1);
   const [productDetails, setProductDetails] = useState(null);
   const [error, setError] = useState(null);
   const [existingEmails, setExistingEmails] = useState([]);
@@ -31,18 +31,6 @@ const ProductDetailsPage = () => {
         setError(err.message || 'Something went wrong');
       });
   }, [productId]);
-
-  const handleDecrement = () => {
-    if (quantityTicker > 1) {
-      setQuantityTicker(quantityTicker - 1);
-    }
-  }
-
-  const handleIncrement = () => {
-    if (quantityTicker < productDetails.quantity) {
-      setQuantityTicker(quantityTicker + 1);
-    }
-  }
 
   const handleFormSubmit = async (formState) => {
     productDetails.reviews.push(formState)
@@ -83,28 +71,24 @@ const ProductDetailsPage = () => {
         </Col>
 
         <Col xs={12} sm={6} md={8}>
-          <h3>{productDetails.name}</h3>
-          <p>{productDetails.description}</p>
-          <h5>Rs.{productDetails.maxRetailPrice}</h5>
-          <p className='review-count'>Number of Reviews : {productDetails.reviews.length}</p>
-          <div className='quantity'>
-            <ButtonGroup aria-label="Quantity change">
-              <Button variant="secondary" data-testid='decrementBtn' onClick={handleDecrement}>-</Button>
-              <p className='added-quantity text-center align-items-center'>{quantityTicker}</p>
-              <Button variant="secondary" data-testid='incrementBtn' onClick={handleIncrement}>+</Button>
-            </ButtonGroup>
-          </div>
-          <div className='button-section'>
-            <Button variant="secondary">ADD TO CART</Button>
-            <Button className='wishlist-btn'><FontAwesomeIcon icon={faHeart} />WISHLIST</Button>
-          </div>
-          <Review onFormSubmit={handleFormSubmit} existingEmails={existingEmails} />
+          <ProductInformation
+            name={productDetails.name}
+            description={productDetails.description}
+            maxRetailPrice={productDetails.maxRetailPrice}
+            discountApplicable={productDetails.discountApplicable}
+            reviewCount={productDetails.reviews.length}
+            quantity={productDetails.quantity} />
+
+          <Review
+            onFormSubmit={handleFormSubmit}
+            existingEmails={existingEmails} />
+
           <h6>Customer Reviews:</h6>
           <div className='customer-reviews'>
             {productDetails.reviews?.map((review, index) => {
               return (
                 <div key={index}>
-                  <p>{review.rating}<FontAwesomeIcon icon={faStar} /></p>
+                  <p>{review.rating} <FontAwesomeIcon icon={faStar} /></p>
                   <p>{review.name}</p>
                   <p>{review.comment}</p>
                 </div>

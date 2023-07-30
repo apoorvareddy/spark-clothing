@@ -16,8 +16,12 @@ const Product = ({ imageUrl, id, name, maxRetailPrice, tagLine, discountApplicab
             <Link to={`/products/${id}`}>{name}</Link>
             <p className='tag-line'>{tagLine}</p>
           </Card.Title>
-          <Card.Text><span>Rs.{discountedPrice}</span><s>Rs.{maxRetailPrice}</s></Card.Text>
-          <Button variant="primary">Add to Cart</Button>
+          <Card.Text>
+            <span className='discount-price'>Rs.{discountedPrice}</span>
+            <s>Rs.{maxRetailPrice}</s>
+            <span className='discount-percentage'>({discountApplicable}% OFF)</span>
+          </Card.Text>
+          <Button variant="secondary">Add to Cart</Button>
         </Card.Body>
       </div>
     </Card>

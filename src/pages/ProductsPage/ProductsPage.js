@@ -4,6 +4,7 @@ import { Container, Row, DropdownButton, Dropdown } from 'react-bootstrap';
 import Product from '../../components/Product/Product';
 import SideNav from './SideNav/SideNav';
 import Title from '../../components/Title/Title';
+import './ProductsPage.css'
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
@@ -90,12 +91,14 @@ const ProductsPage = () => {
     <Container>
       <Title pageTitle='Products' />
       <Row>
+        <h1 className='products-heading'>Products</h1>
         <SideNav />
         <div className="col-12 col-sm-10">
           <DropdownButton
             id="dropdown-menu-align-right"
             onSelect={handleSelect}
             title={selected?.value || 'Select Order'}
+            variant='secondary'
           >
             {dropdownOptions.map((item, index) => {
               return (
