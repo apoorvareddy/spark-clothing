@@ -1,8 +1,18 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+describe('App', () => {
+  // checking whether the header and footer are rendering and app rendered correctly
+  it('renders Header, Footer components or not and app component rendered correctly', () => {
+    // Rendering the app component
+    render(<App />);
+
+    // get the header and footer
+    const header = screen.getByTestId('header');
+    const footer = screen.getByTestId('footer');
+
+    // Assert header and footer are present
+    expect(header).toBeInTheDocument();
+    expect(footer).toBeInTheDocument();
+  });
+})

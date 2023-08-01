@@ -1,11 +1,12 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import Offcanvas from 'react-bootstrap/Offcanvas';
+// import Container from 'react-bootstrap/Container';
+// import Nav from 'react-bootstrap/Nav';
+// import Navbar from 'react-bootstrap/Navbar';
+// // import Offcanvas from 'react-bootstrap/Offcanvas';
 import { Link } from 'react-router-dom';
 import Logo from '../../assets/images/LOGO.jpg';
 import Menu from '../Menu/Menu';
 import './Header.css';
+import { Nav, Navbar, Container } from 'react-bootstrap';
 
 const Header = () => {
   return (
@@ -15,6 +16,7 @@ const Header = () => {
       bg="light"
       data-bs-theme="light"
       style={{ borderBottom: '2px solid rgb(105 120 120)' }}
+      data-testid='header'
     >
       <Container fluid>
         <Link className="navbar-brand" to="/" style={{ padding: '0px' }}>
@@ -24,23 +26,12 @@ const Header = () => {
             style={{ width: '180px', height: '50px' }}
           />
         </Link>
-        <Navbar.Toggle aria-controls="offcanvasNavbar-expand-sm" />
-        <Navbar.Offcanvas
-          id="offcanvasNavbar-expand-sm"
-          aria-labelledby="offcanvasNavbarLabel-expand-sm"
-          placement="end"
-        >
-          <Offcanvas.Header closeButton>
-            <Offcanvas.Title id="offcanvasNavbarLabel-expand-sm">
-              Menu
-            </Offcanvas.Title>
-          </Offcanvas.Header>
-          <Offcanvas.Body>
-            <Nav className="justify-content-end flex-grow-1 pe-3">
-              <Menu showIcons={true} />
-            </Nav>
-          </Offcanvas.Body>
-        </Navbar.Offcanvas>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="justify-content-end flex-grow-1 pe-3">
+            <Menu showIcons={true} />
+          </Nav>
+        </Navbar.Collapse>
       </Container>
     </Navbar>
   );

@@ -479,6 +479,14 @@
           "phone": "9765466398",
           "comment": "amazing!",
           "rating": 4
+        },
+        {
+          "name": "Apoorva",
+          "email": "apoorvareddy77@gmail.com",
+          "phone": "1235459876",
+          "comment": "Good One",
+          "rating": 4,
+          "id": 0.36896424836103536
         }
       ]
     },
@@ -859,6 +867,12 @@
       "email": "apoorvareddy77@gmail.com",
       "message": "Good One",
       "id": 2
+    },
+    {
+      "name": "Bharath",
+      "email": "bkunta2304@gmail.com",
+      "message": "Awesome Website",
+      "id": 3
     }
   ]
 }

@@ -1,7 +1,8 @@
 const History = () => {
   return (
     <>
-      <p>The story of Spark Clothing started in Bangalore
+      <h3 data-testid='history-heading'>Our History</h3>
+      <p data-testid='history-content'>The story of Spark Clothing started in Bangalore
          in the year 2000 with wholesale of hosiery and woven garments,
          catering to the needs of various wholesalers and retailers across India.
          Bangalore textiles industry stands at USD 4.2 billion in 2012 and is globally

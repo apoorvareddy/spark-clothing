@@ -3,23 +3,23 @@ import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './Product.css';
-import useDiscountedPrice from '../../hooks/useDiscountedPrice';
+import useDiscountedPrice from '../../hooks/useDiscountedPrice/useDiscountedPrice';
 
 const Product = ({ imageUrl, id, name, maxRetailPrice, tagLine, discountApplicable }) => {
   const { discountedPrice } = useDiscountedPrice(maxRetailPrice, discountApplicable);
   return (
     <Card className='col-12 col-sm-6 col-md-4'>
       <div className='card-content'>
-        <Card.Img variant="top" src={imageUrl} />
+        <Card.Img variant="top" data-testid='imageUrl' src={imageUrl} />
         <Card.Body>
           <Card.Title>
-            <Link to={`/products/${id}`}>{name}</Link>
-            <p className='tag-line'>{tagLine}</p>
+            <Link to={`/products/${id}`} data-testid='name'>{name}</Link>
+            <p className='tag-line' data-testid='tagLine'>{tagLine}</p>
           </Card.Title>
           <Card.Text>
-            <span className='discount-price'>Rs.{discountedPrice}</span>
-            <s>Rs.{maxRetailPrice}</s>
-            <span className='discount-percentage'>({discountApplicable}% OFF)</span>
+            <span className='discount-price' data-testid='discountedPrice'>Rs.{discountedPrice}</span>
+            <s data-testid='maxRetailPrice'>Rs.{maxRetailPrice}</s>
+            <span className='discount-percentage' data-testid='discountApplicable'>({discountApplicable}% OFF)</span>
           </Card.Text>
           <Button variant="secondary">Add to Cart</Button>
         </Card.Body>

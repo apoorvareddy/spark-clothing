@@ -8,7 +8,7 @@ const AboutUsPage = () => {
       <Title pageTitle='About Us' />
       <h1>About Spart Clothing</h1>
       <h3>“We have the capabilities and experience to deliver the products you need to move forward.”</h3>
-      <Link to='history'>Know more About Us</Link>
+      <Link to='history' data-testid='history'>Know more About Us</Link>
       <Outlet />
     </Container>
   );

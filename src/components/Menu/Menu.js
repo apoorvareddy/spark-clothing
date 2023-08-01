@@ -36,7 +36,7 @@ const Menu = ({ showIcons }) => {
   ];
 
   return (
-    <ul className="navbar-nav me-right mb-2 mb-md-0">
+    <ul className="navbar-nav me-right mb-2 mb-md-0" data-testid='nav-items'>
       {
         menus.map((item) =>
           <MenuItem key={item.id} title={item.title} path={item.path} iconSrc={item.iconSrc} showIcons={showIcons} />

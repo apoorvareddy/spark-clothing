@@ -3,7 +3,7 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import useDiscountedPrice from '../../../../hooks/useDiscountedPrice';
+import useDiscountedPrice from '../../../../hooks/useDiscountedPrice/useDiscountedPrice';
 
 const ProductInformation = ({ name, description, maxRetailPrice, discountApplicable, reviewCount, quantity }) => {
   const [quantityTicker, setQuantityTicker] = useState(1);
@@ -33,7 +33,7 @@ const ProductInformation = ({ name, description, maxRetailPrice, discountApplica
       <div className='quantity'>
         <ButtonGroup aria-label="Quantity change">
           <Button variant="secondary" data-testid='decrementBtn' onClick={handleDecrement}>-</Button>
-          <p className='added-quantity text-center align-items-center'>{quantityTicker}</p>
+          <p className='added-quantity text-center align-items-center' data-testid='currentQuantity'>{quantityTicker}</p>
           <Button variant="secondary" data-testid='incrementBtn' onClick={handleIncrement}>+</Button>
         </ButtonGroup>
       </div>
