@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import AboutUsPage from './AboutUsPage';
-import { MemoryRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import History from './History/History';
 import { HelmetProvider } from 'react-helmet-async';
 // import { act } from 'react-dom/test-utils';
@@ -11,9 +11,9 @@ describe('AboutUsPage', () => {
     // render component
     render(
       <HelmetProvider>
-        <MemoryRouter initialEntries={['/about-us']}>
+        <HashRouter initialEntries={['/about-us']}>
           <AboutUsPage />
-        </MemoryRouter>
+        </HashRouter>
       </HelmetProvider>
     )
     // get the about us header
@@ -26,12 +26,12 @@ describe('AboutUsPage', () => {
     // render component with initial value
     render(
       <HelmetProvider>
-        <MemoryRouter initialEntries={['/about-us']}>
+        <HashRouter initialEntries={['/about-us']}>
           <AboutUsPage />
           <Routes>
             <Route path='history' element={<History />} />
           </Routes>
-        </MemoryRouter>
+        </HashRouter>
       </HelmetProvider>
     );
 
