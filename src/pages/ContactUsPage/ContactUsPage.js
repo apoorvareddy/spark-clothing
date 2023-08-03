@@ -19,15 +19,13 @@ const ContactUsPage = () => {
         return response.json();
       })
       .then((res) => {
-        console.log(res.address);
         setContactDetails(res);
       })
       .catch((err) => {
-        setError(err.message || 'Something went wrong');
+        setError(err.message);
       });
   }, []);
 
-  console.log('contact details' + contactDetails.address);
   if (error) {
     return <div>Unable to fetch contact details, try after some time</div>
   }

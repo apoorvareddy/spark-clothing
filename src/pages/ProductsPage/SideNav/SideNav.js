@@ -5,19 +5,30 @@ import './SideNav.css'
 
 const SideNav = () => {
   const [categories, setCategories] = useState([]);
+  const [error, setError] = useState(null);
+
   useEffect(() => {
     fetch('http://localhost:5000/categories')
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Unable to fetch');
+        }
+        return response.json();
+      })
       .then((categories) => {
         setCategories(categories);
       })
       .catch((err) => {
-        console.log(err);
+        setError(err.message);
       })
       .finally(() => {
         console.log('API call completed');
       });
   }, []);
+
+  if (error) {
+    return <div>Unable to fetch categories, try again later.</div>
+  }
   return (
     <div className='col-12 col-sm-2 side-nav'>
       <Nav className="flex-column">

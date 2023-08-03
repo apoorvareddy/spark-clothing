@@ -8,6 +8,7 @@ const ContactForm = () => {
   const [isError, setIsError] = useState(false);
 
   const onSubmit = async (data) => {
+    console.log(data)
     await fetch('http://localhost:5000/getInTouchData', {
       method: 'POST',
       headers: {
@@ -23,6 +24,7 @@ const ContactForm = () => {
       })
       .then((res) => {
         res && setIsSuccess(true);
+        res && setIsError(false);
       })
       .catch((err) => {
         err && setIsError(true);

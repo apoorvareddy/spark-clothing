@@ -5,12 +5,12 @@ import PropTypes from 'prop-types';
 import './Product.css';
 import useDiscountedPrice from '../../hooks/useDiscountedPrice/useDiscountedPrice';
 
-const Product = ({ imageUrl, id, name, maxRetailPrice, tagLine, discountApplicable }) => {
+const Product = ({ imageUrl, id, name, maxRetailPrice, tagLine, discountApplicable, imgAltText }) => {
   const { discountedPrice } = useDiscountedPrice(maxRetailPrice, discountApplicable);
   return (
     <Card className='col-12 col-sm-6 col-md-4'>
       <div className='card-content'>
-        <Card.Img variant="top" data-testid='imageUrl' src={imageUrl} />
+        <Card.Img variant="top" data-testid='imageUrl' src={imageUrl} alt={imgAltText} />
         <Card.Body>
           <Card.Title>
             <Link to={`/products/${id}`} data-testid='name'>{name}</Link>
@@ -34,7 +34,8 @@ Product.propTypes = {
   name: PropTypes.string,
   maxRetailPrice: PropTypes.number,
   tagLine: PropTypes.string,
-  discountApplicable: PropTypes.number
+  discountApplicable: PropTypes.number,
+  imgAltText: PropTypes.string
 }
 
 export default Product;

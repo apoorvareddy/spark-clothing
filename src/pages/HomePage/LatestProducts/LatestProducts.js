@@ -7,6 +7,7 @@ import Product from '../../../components/Product/Product';
 
 const LatestProducts = () => {
   const [products, setProducts] = useState([]);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const handleNavigate = () => {
@@ -15,14 +16,23 @@ const LatestProducts = () => {
 
   useEffect(() => {
     fetch('http://localhost:5000/products?_limit=3')
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Unable to fetch');
+        }
+        return response.json();
+      })
       .then((data) => {
         setProducts(data);
       })
       .catch((err) => {
-        console.log(err);
+        setError(err.message);
       });
   }, []);
+
+  if (error) {
+    return <div>Unable to fetch products, try again later.</div>
+  }
 
   return (
     <Container style={{ marginTop: '30px' }}>
@@ -36,10 +46,11 @@ const LatestProducts = () => {
               name={product.name}
               maxRetailPrice={product.maxRetailPrice}
               tagLine={product.tagLine}
-              discountApplicable={product.discountApplicable} />
+              discountApplicable={product.discountApplicable}
+              imgAltText={product.imgAltText} />
           );
         })}
-        <Button onClick={handleNavigate} className='view-all-button' variant='secondary'>View All</Button>
+        <Button onClick={handleNavigate} className='view-all-button' variant='secondary' data-testid='view-all'>View All</Button>
       </Row>
     </Container>
   );

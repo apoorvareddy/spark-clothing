@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { HelmetProvider } from 'react-helmet-async';
 import { HashRouter } from 'react-router-dom';
 import ContactUsPage from './ContactUsPage';
+import { mockFetchFailure, mockFetchSuccess } from '../../mocks/mockFetch';
 
 describe('ContactUsPage', () => {
   // checking proper contact form inputs and submit button rendered
@@ -32,5 +33,35 @@ describe('ContactUsPage', () => {
     expect(submitBtn).toHaveAttribute('type', 'submit');
   });
 
-  //
+  // fetch method working as expected
+  it('[SPYING]: fetch method getting the data correctly', async () => {
+    mockFetchSuccess({
+      address: 'Hyderabad',
+      phone: ['(91) 987 123 5678'],
+      email: 'apoorva@sparkclothing.com'
+    })
+    render(
+      <HelmetProvider>
+        <HashRouter>
+          <ContactUsPage />
+        </HashRouter>
+      </HelmetProvider>
+    );
+    const contactEmail = await screen.findByText('apoorva@sparkclothing.com');
+    expect(contactEmail).toBeInTheDocument();
+  })
+
+  // Fetch failure test
+  it('[SPYING]: fetch get method error scenario', async () => {
+    mockFetchFailure('Not Found', 404);
+    render(
+      <HelmetProvider>
+        <HashRouter>
+          <ContactUsPage />
+        </HashRouter>
+      </HelmetProvider>
+    );
+    const errorMessage = await screen.findByText('Unable to fetch contact details, try after some time');
+    expect(errorMessage).toBeInTheDocument();
+  })
 });

@@ -15,7 +15,16 @@
       "quantity": 30,
       "bestSellerRanking": 2,
       "featured": true,
-      "reviews": []
+      "reviews": [
+        {
+          "name": "Apoorva",
+          "email": "bkunta2304@gmail.com",
+          "phone": "1234567890",
+          "comment": "Nice one",
+          "rating": 4,
+          "id": 0.9175622615560219
+        }
+      ]
     },
     {
       "id": 2,
@@ -993,6 +1002,48 @@
       "email": "Apoorva@gmail.com",
       "message": "Apoorva",
       "id": 23
+    },
+    {
+      "name": "Apoorva",
+      "email": "Apoorva@gmail.com",
+      "message": "Apoorva",
+      "id": 24
+    },
+    {
+      "name": "Apoorva",
+      "email": "Apoorva@gmail.com",
+      "message": "Apoorva",
+      "id": 25
+    },
+    {
+      "name": "Bharath",
+      "email": "bkunta2304@gmail.com",
+      "message": "dfads",
+      "id": 26
+    },
+    {
+      "name": "Apoorva",
+      "email": "Apoorva@gmail.com",
+      "message": "Apoorva",
+      "id": 27
+    },
+    {
+      "name": "Apoorva",
+      "email": "Apoorva@gmail.com",
+      "message": "Apoorva",
+      "id": 28
+    },
+    {
+      "name": "Apoorva",
+      "email": "apoorvareddy77@gmail.com",
+      "message": "Sdfgdfg",
+      "id": 29
+    },
+    {
+      "name": "Apoorva",
+      "email": "a@b.com",
+      "message": "dvfdafd",
+      "id": 30
     }
   ]
 }

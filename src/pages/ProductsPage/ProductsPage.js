@@ -33,28 +33,41 @@ const ProductsPage = () => {
   };
 
   let apiUrl;
-  switch (true) {
-  case category === null && order === null:
-    apiUrl = 'http://localhost:5000/products';
-    break;
-  case category === null && order !== null:
-    apiUrl = `http://localhost:5000/products?_sort=maxRetailPrice&_order=${order}`;
-    break;
-  case category !== null && order === null:
-    apiUrl = `http://localhost:5000/products?category=${category}`;
-    break;
-  case category !== null && order !== null:
-    apiUrl = `http://localhost:5000/products?category=${category}&_sort=maxRetailPrice&_order=${order}`;
-    break;
+  // switch (true) {
+  // case category === null && order === null:
+  //   apiUrl = 'http://localhost:5000/products';
+  //   break;
+  // case category === null && order !== null:
+  //   apiUrl = `http://localhost:5000/products?_sort=maxRetailPrice&_order=${order}`;
+  //   break;
+  // case category !== null && order === null:
+  //   apiUrl = `http://localhost:5000/products?category=${category}`;
+  //   break;
+  // case category !== null && order !== null:
+  //   apiUrl = `http://localhost:5000/products?category=${category}&_sort=maxRetailPrice&_order=${order}`;
+  //   break;
 
-  default:
+  // default:
+  //   apiUrl = 'http://localhost:5000/products';
+  //   break;
+  // }
+
+  const updateApiUrl = () => {
     apiUrl = 'http://localhost:5000/products';
-    break;
+    if (category && category !== 'All') {
+      apiUrl += `?category=${category}`;
+      console.log('category' + apiUrl);
+    }
+    if (order) {
+      apiUrl += `${category && category !== 'All' ? '&' : '?'}_sort=maxRetailPrice&_order=${order}`;
+      console.log('order' + apiUrl);
+    }
   }
 
   // console.log(apiUrl);
 
   useEffect(() => {
+    updateApiUrl()
     fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
@@ -120,6 +133,7 @@ const ProductsPage = () => {
                   maxRetailPrice={product.maxRetailPrice}
                   tagLine={product.tagLine}
                   discountApplicable={product.discountApplicable}
+                  imgAltText={product.imgAltText}
                 />
               );
             })}
