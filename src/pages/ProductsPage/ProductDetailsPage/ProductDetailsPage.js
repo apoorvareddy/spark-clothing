@@ -28,7 +28,7 @@ const ProductDetailsPage = () => {
         setExistingEmails(emails);
       })
       .catch((err) => {
-        setError(err.message || 'Something went wrong');
+        setError(err.message);
       });
   }, [productId]);
 
@@ -41,13 +41,16 @@ const ProductDetailsPage = () => {
       },
       body: JSON.stringify(productDetails)
     })
-      .then((res) => res.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Unable to fetch');
+        }
+        return response.json();
+      })
       .then((res) => {
         setProductDetails(res);
       })
-      .catch((err) => console.log('error in patch' + err))
-      .finally(() => {
-      })
+      .catch((err) => setError(err.message))
   }
 
   if (error) {

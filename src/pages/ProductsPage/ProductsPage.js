@@ -8,52 +8,33 @@ import './ProductsPage.css'
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
+  const [error, setError] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const category = searchParams.get('category');
   const order = searchParams.get('order');
-  const sort = searchParams.get('sort');
 
-  const dropdownOptions = [
-    { key: 'asc', value: 'Price: Low to High' },
-    { key: 'desc', value: 'Price: High to Low' }
-  ];
+  // const dropdownOptions = [
+  //   { key: 'asc', value: 'Price: Low to High' },
+  //   { key: 'desc', value: 'Price: High to Low' }
+  // ];
 
-  const validCategories = ['Men', 'Women', 'Kids'];
-  const validSortCategory = ['maxRetailPrice'];
-  const validSortOrder = ['asc', 'desc'];
-  const supportedParameters = ['category', 'sort', 'order'];
+  const orderLabels = {
+    asc: 'Price: Low to High',
+    desc: 'Price: High to Low'
+  }
 
-  const [selected, setSelected] = useState({});
+  // const [selected, setSelected] = useState({});
 
-  const handleSelect = (key, event) => {
-    // setSelected({ key, value: event.target.innerHTML });
+  const handleSelect = (selectedOrder) => {
     searchParams.set('sort', 'maxRetailPrice');
-    searchParams.set('order', key);
+    searchParams.set('order', selectedOrder);
     setSearchParams(searchParams);
   };
 
-  let apiUrl;
-  // switch (true) {
-  // case category === null && order === null:
-  //   apiUrl = 'http://localhost:5000/products';
-  //   break;
-  // case category === null && order !== null:
-  //   apiUrl = `http://localhost:5000/products?_sort=maxRetailPrice&_order=${order}`;
-  //   break;
-  // case category !== null && order === null:
-  //   apiUrl = `http://localhost:5000/products?category=${category}`;
-  //   break;
-  // case category !== null && order !== null:
-  //   apiUrl = `http://localhost:5000/products?category=${category}&_sort=maxRetailPrice&_order=${order}`;
-  //   break;
-
-  // default:
-  //   apiUrl = 'http://localhost:5000/products';
-  //   break;
-  // }
+  let apiUrl = 'http://localhost:5000/products';
 
   const updateApiUrl = () => {
-    apiUrl = 'http://localhost:5000/products';
+    apiUrl = 'http://localhost:5000/products'
     if (category && category !== 'All') {
       apiUrl += `?category=${category}`;
       console.log('category' + apiUrl);
@@ -67,37 +48,28 @@ const ProductsPage = () => {
   // console.log(apiUrl);
 
   useEffect(() => {
-    updateApiUrl()
+    updateApiUrl();
     fetch(apiUrl)
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Unable to fetch');
+        }
+        return response.json();
+      })
       .then((data) => {
+        console.log(data)
         setProducts(data);
-        // console.log(data)
       })
       .catch((err) => {
-        console.log(err);
+        setError(err.message);
       })
       .finally(() => {
-        setSelected(order && dropdownOptions.find(obj => obj.key === order));
+        // setSelected(order && dropdownOptions.find(obj => obj.key === order));
       });
   }, [category, order]);
 
-  if (category && (!category || !validCategories.includes(category))) {
-    return <h4>We couldn&apos;t find any matches! Please check the spelling or try searching something else</h4>
-  }
-
-  if (sort && (!sort || !validSortCategory.includes(sort))) {
-    return <h4>We couldn&apos;t find any matches! Please check the spelling or try searching something else</h4>
-  }
-
-  if (order && (!order || !validSortOrder.includes(order))) {
-    return <h4>We couldn&apos;t find any matches! Please check the spelling or try searching something else</h4>
-  }
-
-  for (const [param] of searchParams.entries()) {
-    if (!supportedParameters.includes(param)) {
-      return <h4>We couldn&apos;t find any matches! Please check the spelling or try searching something else</h4>
-    }
+  if (error) {
+    return <div>Unable to fetch products, try again later.</div>
   }
 
   return (
@@ -109,17 +81,20 @@ const ProductsPage = () => {
         <div className="col-12 col-sm-10">
           <DropdownButton
             id="dropdown-menu-align-right"
+            data-testid="order-dropdown"
             onSelect={handleSelect}
-            title={selected?.value || 'Select Order'}
+            title={order ? orderLabels[order] : 'Select Order'}
             variant='secondary'
           >
-            {dropdownOptions.map((item, index) => {
+            {/* {dropdownOptions.map((item, index) => {
               return (
                 <Dropdown.Item key={index} eventKey={item.key}>
                   {item.value}
                 </Dropdown.Item>
               );
-            })}
+            })} */}
+            <Dropdown.Item eventKey='asc'>Price: Low to High</Dropdown.Item>
+            <Dropdown.Item eventKey='desc'>Price: High to Low</Dropdown.Item>
           </DropdownButton>
 
           <Row>

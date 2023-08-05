@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { HashRouter } from 'react-router-dom';
 import { mockFetchFailure, mockFetchSuccess } from '../../../mocks/mockFetch';
 import SideNav from './SideNav';
@@ -13,6 +13,9 @@ describe('SideNav', () => {
     )
     const categoryName = await screen.findByText('Men');
     expect(categoryName).toBeInTheDocument();
+
+    fireEvent.click(categoryName);
+    expect(window.location.hash).toBe('#/products?category=Men');
   });
 
   it('[SPYING]: fetch method error scenario', async () => {
@@ -24,5 +27,5 @@ describe('SideNav', () => {
     );
     const errorMessage = await screen.findByText('Unable to fetch categories, try again later.');
     expect(errorMessage).toBeInTheDocument();
-  })
+  });
 });

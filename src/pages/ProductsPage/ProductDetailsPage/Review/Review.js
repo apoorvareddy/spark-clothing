@@ -34,10 +34,7 @@ const Review = ({ onFormSubmit, existingEmails }) => {
       })
       setSubmittedEmails((prevEmails) => [...prevEmails, formValue.email]);
       setIsSuccess(true);
-      const timer = setTimeout(handleClose, 2000);
-      return () => {
-        clearTimeout(timer);
-      }
+      setTimeout(handleClose, 2000);
     } else {
       setIsError(true)
     }
@@ -122,7 +119,10 @@ const Review = ({ onFormSubmit, existingEmails }) => {
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="primary" type="submit">
+            <Button variant="danger" type="reset" onClick={handleClose} data-testid='reset-btn'>
+              Cancel
+            </Button>
+            <Button variant="primary" type="submit" data-testid='submit-btn'>
               Submit
             </Button>
           </Modal.Footer>

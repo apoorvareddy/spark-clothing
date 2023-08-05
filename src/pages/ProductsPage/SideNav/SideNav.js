@@ -30,7 +30,7 @@ const SideNav = () => {
     return <div>Unable to fetch categories, try again later.</div>
   }
   return (
-    <div className='col-12 col-sm-2 side-nav'>
+    <div className='col-12 col-sm-2 side-nav' data-testid='nav-section'>
       <Nav className="flex-column">
         <h4 className='sub-heading'>Categories</h4>
         {

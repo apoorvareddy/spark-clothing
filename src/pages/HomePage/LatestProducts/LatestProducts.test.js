@@ -31,7 +31,7 @@ describe('LatestProducts', () => {
     });
   });
 
-  it('[SPYING]: fetch products getting data correctly', async () => {
+  it('[SPYING]: fetch products error handling', async () => {
     mockFetchFailure('Not Found', 404);
     await act(async () => {
       render(

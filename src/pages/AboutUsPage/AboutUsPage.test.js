@@ -3,7 +3,6 @@ import AboutUsPage from './AboutUsPage';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import History from './History/History';
 import { HelmetProvider } from 'react-helmet-async';
-// import { act } from 'react-dom/test-utils';
 
 describe('AboutUsPage', () => {
   // check if the about us component rendered correctly
