@@ -23,14 +23,6 @@
           "comment": "Nice one",
           "rating": 4,
           "id": 0.9175622615560219
-        },
-        {
-          "name": "arun",
-          "email": "arunreddy@gmail.com",
-          "phone": "1234567890",
-          "comment": "Wow nice",
-          "rating": 4,
-          "id": 0.895114092071523
         }
       ]
     },
@@ -57,54 +49,6 @@
           "comment": "Good",
           "rating": 3,
           "id": 0.3564947553126516
-        },
-        {
-          "name": "Bharath",
-          "email": "bkunta2304@gmail.com",
-          "phone": "1235459876",
-          "comment": "Nice Product",
-          "rating": 4,
-          "id": 0.018974399037636314
-        },
-        {
-          "name": "Sayansh",
-          "email": "a@b.com",
-          "phone": "2235435423",
-          "comment": "Wow ",
-          "rating": 5,
-          "id": 0.08490952789759643
-        },
-        {
-          "name": "Arun",
-          "email": "Arun@gmail.com",
-          "phone": "1235459876",
-          "comment": "Good Product",
-          "rating": 4,
-          "id": 0.4634006574544647
-        },
-        {
-          "name": "a",
-          "email": "a@ab.com",
-          "phone": "1235459876",
-          "comment": "sdfs",
-          "rating": 3,
-          "id": 0.3863242912619429
-        },
-        {
-          "name": "Apoorva",
-          "email": "bkunta23045@gmail.com",
-          "phone": "1234567890",
-          "comment": "dfasdf",
-          "rating": 4,
-          "id": 0.9137583557240587
-        },
-        {
-          "name": "dfadsafsd",
-          "email": "sdfsd@hfd.csdf",
-          "phone": "2235435423",
-          "comment": "fasddf",
-          "rating": 4,
-          "id": 0.34445852330250415
         }
       ]
     },
@@ -131,30 +75,6 @@
           "phone": "9765466398",
           "comment": "amazing!",
           "rating": 4
-        },
-        {
-          "name": "Apoorva",
-          "email": "apoorvareddy77@gmail.com",
-          "phone": "1235459876",
-          "comment": "Good",
-          "rating": 3,
-          "id": 0.18012047472172799
-        },
-        {
-          "name": "Apoorva",
-          "email": "bkunta23045@gmail.com",
-          "phone": "1235459876",
-          "comment": "adsfdf",
-          "rating": 0,
-          "id": 0.4832944359854452
-        },
-        {
-          "name": "Bharath",
-          "email": "a@b.com",
-          "phone": "1235459876",
-          "comment": "sdfads",
-          "rating": 0,
-          "id": 0.36928731331208486
         }
       ]
     },
@@ -544,14 +464,6 @@
           "phone": "9765466398",
           "comment": "amazing!",
           "rating": 4
-        },
-        {
-          "name": "Apoorva",
-          "email": "apoorvareddy77@gmail.com",
-          "phone": "1235459876",
-          "comment": "Good One",
-          "rating": 4,
-          "id": 0.36896424836103536
         }
       ]
     },
@@ -926,12 +838,6 @@
       "email": "arun@gmail.com",
       "message": "Awesome website",
       "id": 1
-    },
-    {
-      "name": "Sayansh",
-      "email": "a@b.com",
-      "message": "nice website",
-      "id": 2
     }
   ]
 }
