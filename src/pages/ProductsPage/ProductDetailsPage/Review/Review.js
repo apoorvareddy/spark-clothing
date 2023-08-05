@@ -13,7 +13,7 @@ const Review = ({ onFormSubmit, existingEmails }) => {
   // hook form registraion
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
-  const [ratingValue, setRatingValue] = useState(0);
+  const [ratingValue, setRatingValue] = useState(1);
   const [submittedEmails, setSubmittedEmails] = useState(existingEmails);
 
   // to check if the email is existing
@@ -119,7 +119,6 @@ const Review = ({ onFormSubmit, existingEmails }) => {
                 starDimension='24px'
                 starSpacing='2px'
               />
-              {errors.rating && <Form.Text className='text-danger'>{errors.rating.message}</Form.Text>}
             </div>
 
             <Form.Group className="mb-3" controlId="comment">
