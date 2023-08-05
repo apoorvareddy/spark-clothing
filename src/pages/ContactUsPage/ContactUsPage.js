@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row, Alert } from 'react-bootstrap';
 import { faLocationDot, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ContactForm from './ContactForm/ContactForm';
@@ -27,7 +27,7 @@ const ContactUsPage = () => {
   }, []);
 
   if (error) {
-    return <div>Unable to fetch contact details, try after some time</div>
+    return <Alert variant='danger'>Unable to fetch contact details, try after some time</Alert>
   }
   return (
     <Container className='contact-us'>

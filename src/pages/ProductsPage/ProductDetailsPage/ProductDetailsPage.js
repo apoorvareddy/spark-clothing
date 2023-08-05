@@ -1,6 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { Col, Container, Row, Image } from 'react-bootstrap';
+import { Col, Container, Row, Image, Alert } from 'react-bootstrap';
 import Review from './Review/Review';
 import Title from '../../../components/Title/Title';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -54,7 +54,7 @@ const ProductDetailsPage = () => {
   }
 
   if (error) {
-    return <div>Invalid Product, The entered Product is not listed.</div>
+    return <Alert variant='danger'>Invalid Product, The entered Product is not listed.</Alert>
   }
 
   if (!productDetails) {

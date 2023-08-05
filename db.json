@@ -23,6 +23,14 @@
           "comment": "Nice one",
           "rating": 4,
           "id": 0.9175622615560219
+        },
+        {
+          "name": "arun",
+          "email": "arunreddy@gmail.com",
+          "phone": "1234567890",
+          "comment": "Wow nice",
+          "rating": 4,
+          "id": 0.895114092071523
         }
       ]
     },
@@ -902,6 +910,12 @@
       "email": "arun@gmail.com",
       "message": "Awesome website",
       "id": 1
+    },
+    {
+      "name": "Sayansh",
+      "email": "a@b.com",
+      "message": "nice website",
+      "id": 2
     }
   ]
 }

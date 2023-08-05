@@ -90,4 +90,23 @@ describe('ContactForm', () => {
       }
     )
   });
+
+  it('render error messages when the form submitted without any values', async () => {
+    render(
+      <ContactForm />
+    )
+
+    fireEvent.click(screen.getByRole('button', { name: 'Submit' }));
+
+    await waitFor(() => {
+      const nameError = screen.getByText('Name is required');
+      expect(nameError).toBeInTheDocument();
+
+      const emailError = screen.getByText('Email is required');
+      expect(emailError).toBeInTheDocument();
+
+      const messageError = screen.getByText('Message is required');
+      expect(messageError).toBeInTheDocument();
+    })
+  })
 });

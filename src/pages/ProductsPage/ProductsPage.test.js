@@ -89,7 +89,10 @@ describe('LatestProducts', () => {
       );
     })
     const navSection = screen.getByTestId('nav-section').querySelectorAll('a')[1];
+    const navSectionAll = screen.getByTestId('nav-section').querySelectorAll('a')[0];
+
     expect(navSection).toHaveAttribute('href', '#/products?category=Men');
+    expect(navSectionAll).toHaveAttribute('href', '#/products');
 
     fireEvent.click(navSection);
     expect(window.location.hash).toBe('#/products?category=Men');
@@ -101,5 +104,11 @@ describe('LatestProducts', () => {
     fireEvent.click(ascendingOrder);
 
     expect(window.location.hash).toBe('#/products?category=Men&sort=maxRetailPrice&order=asc');
+
+    fireEvent.click(navSectionAll);
+    expect(window.location.hash).toBe('#/products');
+    fireEvent.click(dropdownTitle);
+    fireEvent.click(ascendingOrder);
+    expect(window.location.hash).toBe('#/products?sort=maxRetailPrice&order=asc');
   });
 });

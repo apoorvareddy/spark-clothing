@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Nav from 'react-bootstrap/Nav';
+import { Nav, Alert } from 'react-bootstrap';
 import './SideNav.css'
 
 const SideNav = () => {
@@ -27,7 +27,7 @@ const SideNav = () => {
   }, []);
 
   if (error) {
-    return <div>Unable to fetch categories, try again later.</div>
+    return <Alert variant='danger'>Unable to fetch categories, try again later.</Alert>
   }
   return (
     <div className='col-12 col-sm-2 side-nav' data-testid='nav-section'>

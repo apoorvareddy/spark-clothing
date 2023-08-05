@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
+import { Alert, Button, Container, Row } from 'react-bootstrap';
 import Product from '../../../components/Product/Product';
 
 const LatestProducts = () => {
@@ -31,7 +29,7 @@ const LatestProducts = () => {
   }, []);
 
   if (error) {
-    return <div>Unable to fetch products, try again later.</div>
+    return <Alert variant='danger'>Unable to fetch products, try again later.</Alert>
   }
 
   return (

@@ -6,6 +6,7 @@ import './Product.css';
 import useDiscountedPrice from '../../hooks/useDiscountedPrice/useDiscountedPrice';
 
 const Product = ({ imageUrl, id, name, maxRetailPrice, tagLine, discountApplicable, imgAltText }) => {
+  // using useDiscountedPrice hook for discountedPrice
   const { discountedPrice } = useDiscountedPrice(maxRetailPrice, discountApplicable);
   return (
     <Card className='col-12 col-sm-6 col-md-4'>

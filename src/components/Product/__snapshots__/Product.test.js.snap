@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Product have right snapshot with all the requirements completed 1`] = `
+<div
+  className="col-12 col-sm-6 col-md-4 card"
+>
+  <div
+    className="card-content"
+  >
+    <img
+      alt="UCB Full Sleeves Sweatshirt Text Print - Blue"
+      className="card-img-top"
+      data-testid="imageUrl"
+      src="images/ucb-t-shirt.jpg"
+    />
+    <div
+      className="card-body"
+    >
+      <div
+        className="card-title h5"
+      >
+        <a
+          data-testid="name"
+          href="#/products/undefined"
+          onClick={[Function]}
+        >
+          UCB
+        </a>
+        <p
+          className="tag-line"
+          data-testid="tagLine"
+        >
+          Full Sleeves Sweatshirt Text Print - Blue
+        </p>
+      </div>
+      <p
+        className="card-text"
+      >
+        <span
+          className="discount-price"
+          data-testid="discountedPrice"
+        >
+          Rs.
+          NaN
+        </span>
+        <s
+          data-testid="maxRetailPrice"
+        >
+          Rs.
+        </s>
+        <span
+          className="discount-percentage"
+          data-testid="discountApplicable"
+        >
+          (
+          % OFF)
+        </span>
+      </p>
+      <button
+        className="btn btn-secondary"
+        disabled={false}
+        type="button"
+      >
+        Add to Cart
+      </button>
+    </div>
+  </div>
+</div>
+`;

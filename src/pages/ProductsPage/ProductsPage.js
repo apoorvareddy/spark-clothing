@@ -1,6 +1,6 @@
 import { useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { Container, Row, DropdownButton, Dropdown } from 'react-bootstrap';
+import { Container, Row, DropdownButton, Dropdown, Alert } from 'react-bootstrap';
 import Product from '../../components/Product/Product';
 import SideNav from './SideNav/SideNav';
 import Title from '../../components/Title/Title';
@@ -69,7 +69,7 @@ const ProductsPage = () => {
   }, [category, order]);
 
   if (error) {
-    return <div>Unable to fetch products, try again later.</div>
+    return <Alert variant='danger'>Unable to fetch products, try again later.</Alert>
   }
 
   return (
@@ -79,6 +79,7 @@ const ProductsPage = () => {
         <h1 className='products-heading'>Products</h1>
         <SideNav />
         <div className="col-12 col-sm-10">
+          <div className='product-count'>{products?.length} Products Available</div>
           <DropdownButton
             id="dropdown-menu-align-right"
             data-testid="order-dropdown"
