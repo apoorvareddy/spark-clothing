@@ -6,14 +6,18 @@ import ProductInformation from './ProductInformation';
 describe('ProductInformation', () => {
   // checking Product information component renders the correct discounted price using useDiscountedPrice hook
   it('receives maxRetailPrice and discountApplicable and calculates the discountedPrice', () => {
+    // mock data
     const maxRetailPrice = 100;
     const discountApplicable = 20;
+
+    // render product information component
     render(
       <HashRouter>
         <ProductInformation maxRetailPrice={maxRetailPrice} discountApplicable={discountApplicable} />
       </HashRouter>
     );
 
+    // use custom hook for testing prices are rendered properly
     const { originalPrice, discountedPrice } = useDiscountedPrice(maxRetailPrice, discountApplicable);
     expect(originalPrice).toBe(100);
     expect(discountedPrice).toBe(80);

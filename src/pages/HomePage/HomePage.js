@@ -30,8 +30,11 @@ const HomePage = () => {
   return (
     <>
       <Title pageTitle='Home' />
+
       <LiveOffersCarousel />
+
       <LatestProducts />
+
       <div className="promising-services">
         {promisingServices.map((service, i) => {
           return (

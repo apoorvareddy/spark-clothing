@@ -7,6 +7,7 @@ const SideNav = () => {
   const [categories, setCategories] = useState([]);
   const [error, setError] = useState(null);
 
+  // api call for getting the categories
   useEffect(() => {
     fetch('http://localhost:5000/categories')
       .then((response) => {
@@ -21,14 +22,13 @@ const SideNav = () => {
       .catch((err) => {
         setError(err.message);
       })
-      .finally(() => {
-        console.log('API call completed');
-      });
   }, []);
 
+  // error section render
   if (error) {
     return <Alert variant='danger'>Unable to fetch categories, try again later.</Alert>
   }
+
   return (
     <div className='col-12 col-sm-2 side-nav' data-testid='nav-section'>
       <Nav className="flex-column">

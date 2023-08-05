@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { HashRouter } from 'react-router-dom';
 import renderer from 'react-test-renderer';
-// import { renderHook } from '@testing-library/react-hooks';
 import useDiscountedPrice from '../../hooks/useDiscountedPrice/useDiscountedPrice';
 import Product from './Product';
 
@@ -21,6 +20,7 @@ describe('Product', () => {
     expect(discountedPrice).toBe(80);
   });
 
+  // checking whether all the product information receiving properly or not
   it('renders all the product information correctly', () => {
     render(
       <HashRouter>
@@ -38,6 +38,7 @@ describe('Product', () => {
     expect(screen.getByText('Rs.5000')).toBeInTheDocument();
   })
 
+  // have a snapshot with all the requirements
   it('have right snapshot with all the requirements completed', () => {
     const snapshotInJson = renderer.create(
       <HashRouter>

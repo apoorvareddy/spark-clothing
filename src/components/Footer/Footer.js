@@ -6,6 +6,7 @@ import './Footer.css';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
+  // array for icons details
   const icons = [
     {
       icon: faSquareFacebook,
@@ -33,8 +34,10 @@ const Footer = () => {
       <Container>
         <Row>
           <Col xs={12} lg={7} className='footer-links-section'>
+            {/* calling menu with showIcons false to render only links without icons */}
             <Menu showIcons={false} />
             <div className='font-icons'>
+              {/* rendering all the icons using map on icons */}
               {icons.map((item, index) => {
                 return (
                   <Link key={index} to={item.url}>

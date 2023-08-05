@@ -9,11 +9,14 @@ import './ProductDetailsPage.css';
 import ProductInformation from './ProductInformation/ProductInformation';
 
 const ProductDetailsPage = () => {
+  // useParams for getting the param from url
   const { productId } = useParams();
+
   const [productDetails, setProductDetails] = useState(null);
   const [error, setError] = useState(null);
   const [existingEmails, setExistingEmails] = useState([]);
 
+  // fetch api for getting the product details
   useEffect(() => {
     fetch(`http://localhost:5000/products/${productId}`)
       .then((response) => {
@@ -32,6 +35,7 @@ const ProductDetailsPage = () => {
       });
   }, [productId]);
 
+  // handle submit to perform on the child review component form data post to the products detials object
   const handleFormSubmit = async (formState) => {
     productDetails.reviews.push(formState)
     await fetch(`http://localhost:5000/products/${productId}`, {
@@ -53,10 +57,12 @@ const ProductDetailsPage = () => {
       .catch((err) => setError(err.message))
   }
 
+  // error section to render when some error occured
   if (error) {
     return <Alert variant='danger'>Invalid Product, The entered Product is not listed.</Alert>
   }
 
+  // loader when the productDetails loading
   if (!productDetails) {
     return <div className="spinner-border text-success" role="status" />
   }
@@ -64,6 +70,7 @@ const ProductDetailsPage = () => {
   return (
     <Container>
       <Title pageTitle='Product Details' />
+
       <Row>
         <Col xs={12}>
           <Link to='/products' className='back-to-products'><FontAwesomeIcon icon={faAngleLeft} />Back to Products</Link>
@@ -99,7 +106,9 @@ const ProductDetailsPage = () => {
             })}
           </div>
         </Col>
+
       </Row>
+
     </Container>
   )
 }

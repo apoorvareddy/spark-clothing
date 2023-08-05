@@ -35,11 +35,14 @@ describe('ContactUsPage', () => {
 
   // fetch method working as expected
   it('[SPYING]: fetch method getting the data correctly', async () => {
+    // mocking the success data
     mockFetchSuccess({
       address: 'Hyderabad',
       phone: ['(91) 987 123 5678'],
       email: 'apoorva@sparkclothing.com'
     })
+
+    // render the contact component
     render(
       <HelmetProvider>
         <HashRouter>
@@ -47,13 +50,18 @@ describe('ContactUsPage', () => {
         </HashRouter>
       </HelmetProvider>
     );
+
+    // get the value fo the email from screen using findbytext and check it is present in the document
     const contactEmail = await screen.findByText('apoorva@sparkclothing.com');
     expect(contactEmail).toBeInTheDocument();
   })
 
   // Fetch failure test
   it('[SPYING]: fetch get method error scenario', async () => {
+    // mocking the failure api resolve
     mockFetchFailure('Not Found', 404);
+
+    // render contact component
     render(
       <HelmetProvider>
         <HashRouter>
@@ -61,6 +69,8 @@ describe('ContactUsPage', () => {
         </HashRouter>
       </HelmetProvider>
     );
+
+    // get the error message from screen and check it is present in the document
     const errorMessage = await screen.findByText('Unable to fetch contact details, try after some time');
     expect(errorMessage).toBeInTheDocument();
   })

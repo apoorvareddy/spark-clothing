@@ -1,3 +1,4 @@
+// success mock funtion
 export const mockFetchSuccess = async (data) => {
   jest.spyOn(global, 'fetch').mockImplementation(() => {
     const res = {
@@ -8,6 +9,7 @@ export const mockFetchSuccess = async (data) => {
   })
 };
 
+// failure mock function
 export const mockFetchFailure = async (errorMessage, statusCode) => {
   jest.spyOn(global, 'fetch').mockImplementation(() => {
     const res = {

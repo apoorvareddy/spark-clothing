@@ -22,6 +22,7 @@ describe('ErrorBoundary', () => {
     consoleErrorSpy.mockRestore();
   });
 
+  // checking if it renders the component properly when no runtime error occurs
   it('renders children component when no error occurs', () => {
     const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
     render(

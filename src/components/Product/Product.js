@@ -12,11 +12,13 @@ const Product = ({ imageUrl, id, name, maxRetailPrice, tagLine, discountApplicab
     <Card className='col-12 col-sm-6 col-md-4'>
       <div className='card-content'>
         <Card.Img variant="top" data-testid='imageUrl' src={imageUrl} alt={imgAltText} />
+
         <Card.Body>
           <Card.Title>
             <Link to={`/products/${id}`} data-testid='name'>{name}</Link>
             <p className='tag-line' data-testid='tagLine'>{tagLine}</p>
           </Card.Title>
+
           <Card.Text>
             <span className='discount-price' data-testid='discountedPrice'>Rs.{discountedPrice}</span>
             <s data-testid='maxRetailPrice'>Rs.{maxRetailPrice}</s>

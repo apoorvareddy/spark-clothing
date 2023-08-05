@@ -5,21 +5,25 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import useDiscountedPrice from '../../../../hooks/useDiscountedPrice/useDiscountedPrice';
 
+// product information component with props
 const ProductInformation = ({ name, description, maxRetailPrice, discountApplicable, reviewCount, quantity }) => {
   const [quantityTicker, setQuantityTicker] = useState(1);
   const { discountedPrice } = useDiscountedPrice(maxRetailPrice, discountApplicable);
 
+  // perform quantity decrement when clicked on decrement button
   const handleDecrement = () => {
     if (quantityTicker > 1) {
       setQuantityTicker(quantityTicker - 1);
     }
   }
 
+  // perform quantity increment till available quantity when clicked on increment button
   const handleIncrement = () => {
     if (quantityTicker < quantity) {
       setQuantityTicker(quantityTicker + 1);
     }
   }
+
   return (
     <div>
       <h3>{name}</h3>
@@ -29,7 +33,9 @@ const ProductInformation = ({ name, description, maxRetailPrice, discountApplica
         <s className='max-retail-price'>Rs.{maxRetailPrice}</s>
         <span className='discount-percentage'>({discountApplicable}% OFF) </span>
       </p>
+
       <p className='review-count'>Number of Reviews : {reviewCount}</p>
+
       <div className='quantity'>
         <ButtonGroup aria-label="Quantity change">
           <Button variant="secondary" data-testid='decrementBtn' onClick={handleDecrement}>-</Button>
@@ -37,6 +43,7 @@ const ProductInformation = ({ name, description, maxRetailPrice, discountApplica
           <Button variant="secondary" data-testid='incrementBtn' onClick={handleIncrement}>+</Button>
         </ButtonGroup>
       </div>
+
       <div className='button-section'>
         <Button variant="secondary">ADD TO CART</Button>
         <Button className='wishlist-btn'><FontAwesomeIcon icon={faHeart} />WISHLIST</Button>

@@ -26,7 +26,9 @@ const Header = () => {
             style={{ width: '180px', height: '50px' }}
           />
         </Link>
+
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="justify-content-end flex-grow-1 pe-3">
             <Form.Group className="d-flex">

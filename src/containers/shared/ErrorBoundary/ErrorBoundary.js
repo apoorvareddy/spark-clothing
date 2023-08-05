@@ -11,8 +11,7 @@ export class ErrorBoundary extends Component {
     };
   }
 
-  // let's catch the error
-  // when there is a runtime error -- this method would be called automatically
+  // let's catch the runtime error
   static getDerivedStateFromError (error) {
     // Update the state so the next render will show the fallback UI
     return {
@@ -20,13 +19,6 @@ export class ErrorBoundary extends Component {
       errorMessage: error
     };
   }
-
-  // componentDidCatch (error, compiledError) {
-  //   // console.log('====Inside ComponentDidCatch========');
-  //   console.log(error); // error in original source code
-  //   console.log(compiledError); // error in compiled bundle.js
-  //   // you can log the error in some third party tools ex: LogRocket
-  // }
 
   render () {
     if (this.state.hasError) {

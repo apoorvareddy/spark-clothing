@@ -9,22 +9,30 @@ const Review = ({ onFormSubmit, existingEmails }) => {
   const [show, setShow] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
+
+  // hook form registraion
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
+
   const [ratingValue, setRatingValue] = useState(0);
   const [submittedEmails, setSubmittedEmails] = useState(existingEmails);
 
+  // to check if the email is existing
   const isEmailUnique = (email) => {
     return !submittedEmails.includes(email);
   }
 
+  // performs closing the review modal and resets all data
   const handleClose = () => {
     setShow(false);
     setIsSuccess(false);
     reset();
     setRatingValue(0);
   }
+
+  // performs show logic for modal
   const handleShow = () => setShow(true);
 
+  // performs form submission logic for valid and error scenarios
   const onSubmit = async (formValue) => {
     if (isEmailUnique(formValue.email)) {
       await onFormSubmit({
@@ -44,6 +52,7 @@ const Review = ({ onFormSubmit, existingEmails }) => {
     }, 3000);
   }
 
+  // performs rating change besed on selection
   const handleRatingChange = (newRating) => {
     setRatingValue(newRating);
   }
@@ -59,6 +68,7 @@ const Review = ({ onFormSubmit, existingEmails }) => {
           <Modal.Header closeButton>
             <Modal.Title>Write a Review</Modal.Title>
           </Modal.Header>
+
           <Modal.Body>
             <Form.Group controlId="name">
               <Form.Label>Name</Form.Label>
@@ -68,6 +78,7 @@ const Review = ({ onFormSubmit, existingEmails }) => {
               />
               {errors.name && <Form.Text className='text-danger'>{errors.name.message}</Form.Text>}
             </Form.Group>
+
             <Form.Group controlId="email">
               <Form.Label>Email</Form.Label>
               <Form.Control
@@ -82,6 +93,7 @@ const Review = ({ onFormSubmit, existingEmails }) => {
               />
               {errors.email && <Form.Text className='text-danger'>{errors.email.message}</Form.Text>}
             </Form.Group>
+
             <Form.Group controlId="phone">
               <Form.Label>Phone</Form.Label>
               <Form.Control
@@ -96,6 +108,7 @@ const Review = ({ onFormSubmit, existingEmails }) => {
               />
               {errors.phone && <Form.Text className='text-danger'>{errors.phone.message}</Form.Text>}
             </Form.Group>
+
             <div>
               <Form.Label>Rating</Form.Label>
               <StarRating
@@ -108,6 +121,7 @@ const Review = ({ onFormSubmit, existingEmails }) => {
               />
               {errors.rating && <Form.Text className='text-danger'>{errors.rating.message}</Form.Text>}
             </div>
+
             <Form.Group className="mb-3" controlId="comment">
               <Form.Label>Review</Form.Label>
               <Form.Control
@@ -118,6 +132,7 @@ const Review = ({ onFormSubmit, existingEmails }) => {
               {errors.comment && <Form.Text className='text-danger'>{errors.comment.message}</Form.Text>}
             </Form.Group>
           </Modal.Body>
+
           <Modal.Footer>
             <Button variant="danger" type="reset" onClick={handleClose} data-testid='reset-btn'>
               Cancel
@@ -126,6 +141,7 @@ const Review = ({ onFormSubmit, existingEmails }) => {
               Submit
             </Button>
           </Modal.Footer>
+
           {isSuccess && <p className='text-success text-center'>Review saved successfully!</p>}
           {isError && <p className='text-warning text-center'>Email already used for a review.</p>}
         </Form>

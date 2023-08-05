@@ -9,44 +9,40 @@ import './ProductsPage.css'
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
+
+  // getting the search params by using useSearchParams hook
   const [searchParams, setSearchParams] = useSearchParams();
   const category = searchParams.get('category');
   const order = searchParams.get('order');
 
-  // const dropdownOptions = [
-  //   { key: 'asc', value: 'Price: Low to High' },
-  //   { key: 'desc', value: 'Price: High to Low' }
-  // ];
-
+  // sort order labels
   const orderLabels = {
     asc: 'Price: Low to High',
     desc: 'Price: High to Low'
   }
 
-  // const [selected, setSelected] = useState({});
-
+  // handle select function for selecting sort option and setting search params based on sort
   const handleSelect = (selectedOrder) => {
     searchParams.set('sort', 'maxRetailPrice');
     searchParams.set('order', selectedOrder);
     setSearchParams(searchParams);
   };
 
+  // default apiURl
   let apiUrl = 'http://localhost:5000/products';
 
+  // updateApiUrl based on the side nav link and sort option
   const updateApiUrl = () => {
     apiUrl = 'http://localhost:5000/products'
     if (category && category !== 'All') {
       apiUrl += `?category=${category}`;
-      console.log('category' + apiUrl);
     }
     if (order) {
       apiUrl += `${category && category !== 'All' ? '&' : '?'}_sort=maxRetailPrice&_order=${order}`;
-      console.log('order' + apiUrl);
     }
   }
 
-  // console.log(apiUrl);
-
+  // fetch api call for getting the products
   useEffect(() => {
     updateApiUrl();
     fetch(apiUrl)
@@ -57,7 +53,6 @@ const ProductsPage = () => {
         return response.json();
       })
       .then((data) => {
-        console.log(data)
         setProducts(data);
       })
       .catch((err) => {
@@ -68,6 +63,7 @@ const ProductsPage = () => {
       });
   }, [category, order]);
 
+  // render error if api throws any error
   if (error) {
     return <Alert variant='danger'>Unable to fetch products, try again later.</Alert>
   }
@@ -75,11 +71,15 @@ const ProductsPage = () => {
   return (
     <Container>
       <Title pageTitle='Products' />
+
       <Row>
         <h1 className='products-heading'>Products</h1>
+
         <SideNav />
+
         <div className="col-12 col-sm-10">
           <div className='product-count'>{products?.length} Products Available</div>
+
           <DropdownButton
             id="dropdown-menu-align-right"
             data-testid="order-dropdown"
@@ -87,13 +87,6 @@ const ProductsPage = () => {
             title={order ? orderLabels[order] : 'Select Order'}
             variant='secondary'
           >
-            {/* {dropdownOptions.map((item, index) => {
-              return (
-                <Dropdown.Item key={index} eventKey={item.key}>
-                  {item.value}
-                </Dropdown.Item>
-              );
-            })} */}
             <Dropdown.Item eventKey='asc'>Price: Low to High</Dropdown.Item>
             <Dropdown.Item eventKey='desc'>Price: High to Low</Dropdown.Item>
           </DropdownButton>

@@ -4,7 +4,9 @@ import { HashRouter } from 'react-router-dom';
 import HomePage from './HomePage';
 
 describe('HomePage', () => {
+  // test whether all the elements present in the document
   it('should contain latest products and all the services available', () => {
+    // render Home Page component
     render(
       <HelmetProvider>
         <HashRouter>

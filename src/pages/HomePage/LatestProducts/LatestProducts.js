@@ -8,10 +8,12 @@ const LatestProducts = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
+  // function to navigate to products page
   const handleNavigate = () => {
     navigate('/products')
   }
 
+  // api call to get the producus
   useEffect(() => {
     fetch('http://localhost:5000/products?_limit=3')
       .then((response) => {
@@ -28,6 +30,7 @@ const LatestProducts = () => {
       });
   }, []);
 
+  // rendering the error if api call failed
   if (error) {
     return <Alert variant='danger'>Unable to fetch products, try again later.</Alert>
   }
@@ -35,6 +38,7 @@ const LatestProducts = () => {
   return (
     <Container style={{ marginTop: '30px' }}>
       <h1>Latest Products</h1>
+
       <Row>
         {products.map((product, i) => {
           return (
@@ -48,6 +52,7 @@ const LatestProducts = () => {
               imgAltText={product.imgAltText} />
           );
         })}
+
         <Button onClick={handleNavigate} className='view-all-button' variant='secondary' data-testid='view-all'>View All</Button>
       </Row>
     </Container>
