@@ -34,7 +34,7 @@ describe('AppRoutes', () => {
   });
 
   // checking about us component is rendered when the route is /about-us
-  it('renders products component when on the products route', () => {
+  it('renders about us component when on the about-us route', () => {
     render(
       <HelmetProvider>
         <MemoryRouter initialEntries={['/about-us']}>
@@ -45,5 +45,19 @@ describe('AppRoutes', () => {
     // Assert products page is rendered text of the products page is present in the document
     const aboutElement = screen.getByText('About Spart Clothing');
     expect(aboutElement).toBeInTheDocument();
+  });
+
+  // checking contact us component is rendered when the route is /contact-us
+  it('renders contact us component when on the contact-us route', () => {
+    render(
+      <HelmetProvider>
+        <MemoryRouter initialEntries={['/contact-us']}>
+          <AppRoutes />
+        </MemoryRouter>
+      </HelmetProvider>
+    )
+    // Assert products page is rendered text of the products page is present in the document
+    const contactElement = screen.getByText('Contact Us');
+    expect(contactElement).toBeInTheDocument();
   });
 });

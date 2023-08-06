@@ -22,7 +22,7 @@ describe('PageNotFound', () => {
   // checking if go back home link is navigating to home
   it('Go back to home link should navigate to the home page', () => {
     // render component
-    const { container } = render(
+    render(
       <HelmetProvider>
         <HashRouter>
           <PageNotFoundPage />
@@ -31,7 +31,7 @@ describe('PageNotFound', () => {
     );
 
     // get the link by query selector
-    const link = container.querySelector('a');
+    const link = screen.getByText('Go Back To Home');
 
     // trigger click on link
     fireEvent.click(link);
