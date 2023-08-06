@@ -23,6 +23,14 @@
           "comment": "Nice one",
           "rating": 4,
           "id": 0.9175622615560219
+        },
+        {
+          "name": "Bharath",
+          "email": "bkunta23045@gmail.com",
+          "phone": "2235435423",
+          "comment": "Good Website",
+          "rating": 4,
+          "id": 0.7339880267937406
         }
       ]
     },
@@ -838,6 +846,12 @@
       "email": "arun@gmail.com",
       "message": "Awesome website",
       "id": 1
+    },
+    {
+      "name": "Apoorva",
+      "email": "apoorvareddy77@gmail.com",
+      "message": "Good website",
+      "id": 2
     }
   ]
 }

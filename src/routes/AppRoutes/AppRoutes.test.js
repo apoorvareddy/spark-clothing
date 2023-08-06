@@ -1,7 +1,7 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitForElementToBeRemoved, waitFor } from '@testing-library/react';
 import { HelmetProvider } from 'react-helmet-async';
 import { MemoryRouter } from 'react-router-dom';
-import AppRoutes from './AppRoutes'
+import AppRoutes from './AppRoutes';
 
 describe('AppRoutes', () => {
   // checking home component is rendered when the route is /
@@ -20,7 +20,7 @@ describe('AppRoutes', () => {
   });
 
   // checking products component is rendered when the route is /products
-  it('renders products component when on the products route', () => {
+  it('renders products component when on the products route', async () => {
     render(
       <HelmetProvider>
         <MemoryRouter initialEntries={['/products']}>
@@ -28,9 +28,13 @@ describe('AppRoutes', () => {
         </MemoryRouter>
       </HelmetProvider>
     )
+
+    await waitForElementToBeRemoved(() => screen.getByTestId('spinner'))
     // Assert products page is rendered text of the products page is present in the document
-    const productElement = screen.getByText('Products');
-    expect(productElement).toBeInTheDocument();
+    await waitFor(() => {
+      const productElement = screen.getByText('Products');
+      expect(productElement).toBeInTheDocument();
+    })
   });
 
   // checking about us component is rendered when the route is /about-us

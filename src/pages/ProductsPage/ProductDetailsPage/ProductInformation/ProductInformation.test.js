@@ -53,7 +53,10 @@ describe('ProductInformation', () => {
   // checking the quantity is having max value upon increment
   it('has quantity with max value "quantity" upon continuous increment', () => {
     // render the product information component with prop quantity
-    render(<ProductInformation quantity={10} />);
+    render(<ProductInformation
+      quantity={10}
+      name='babyhug'
+      description='white shirt' />);
 
     // fetching currentQuantity element
     const currentQuantity = screen.getByTestId('currentQuantity');
