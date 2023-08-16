@@ -9,7 +9,7 @@ const SideNav = () => {
 
   // api call for getting the categories
   useEffect(() => {
-    fetch('http://localhost:5000/categories')
+    fetch('http://localhost:50000/categories')
       .then((response) => {
         if (!response.ok) {
           throw new Error('Unable to fetch');
@@ -24,17 +24,13 @@ const SideNav = () => {
       })
   }, []);
 
-  // error section render
-  if (error) {
-    return <Alert variant='danger'>Unable to fetch categories, try again later.</Alert>
-  }
-
   return (
     <div className='col-12 col-sm-2 side-nav' data-testid='nav-section'>
       <Nav className="flex-column">
         <h4 className='sub-heading'>Categories</h4>
-        {
-          categories.map((category) => {
+        {error
+          ? <Alert variant='danger' className=''>Unable to fetch categories, try again later.</Alert>
+          : categories.map((category) => {
             return (
               <Link key={category.id} to={category.name !== 'All' ? `/products?category=${category.name}` : '/products'}>{category.name}</Link>
             )

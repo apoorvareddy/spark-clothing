@@ -9,26 +9,31 @@ const Footer = () => {
   // array for icons details
   const icons = [
     {
+      id: 1,
       icon: faSquareFacebook,
       title: 'facebook',
       url: 'https://www.facebook.com/sparkclothing'
     },
     {
+      id: 2,
       icon: faSquareTwitter,
       title: 'twitter',
       url: 'https://twitter.com/sparkclothing'
     },
     {
+      id: 3,
       icon: faInstagram,
       title: 'instagram',
       url: 'https://www.instagram.com/sparkclothing/'
     },
     {
+      id: 4,
       icon: faWhatsapp,
       title: 'whatsapp',
       url: 'https://api.whatsapp.com/send?phone=1234567890'
     }
   ]
+
   return (
     <div className='footer' data-testid='footer'>
       <Container>
@@ -38,9 +43,9 @@ const Footer = () => {
             <Menu showIcons={false} />
             <div className='font-icons'>
               {/* rendering all the icons using map on icons */}
-              {icons.map((item, index) => {
+              {icons.map((item) => {
                 return (
-                  <Link key={index} to={item.url}>
+                  <Link key={item.id} to={item.url}>
                     <FontAwesomeIcon icon={item.icon} style={{ width: '30px', height: '30px' }} title={item.title} />
                   </Link>
                 )

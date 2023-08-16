@@ -9,13 +9,19 @@ const App = () => {
   return (
     <HelmetProvider>
       <HashRouter>
-        <Header />
         <ErrorBoundary>
-          <div className='main-container'>
-            <AppRoutes />
-          </div>
+          <Header />
         </ErrorBoundary>
-        <Footer />
+
+        <div className="main-container">
+          <ErrorBoundary>
+            <AppRoutes />
+          </ErrorBoundary>
+        </div>
+
+        <ErrorBoundary>
+          <Footer />
+        </ErrorBoundary>
       </HashRouter>
     </HelmetProvider>
   );

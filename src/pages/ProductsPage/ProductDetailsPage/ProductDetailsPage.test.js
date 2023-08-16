@@ -6,6 +6,10 @@ import { HelmetProvider } from 'react-helmet-async';
 import { act } from 'react-dom/test-utils';
 
 describe('ProductDetailsPage', () => {
+  // beforeEach(() => {
+  //   fetch.resetMocks()
+  // });
+
   // testing product details rendered properly
   it('[SPYING]: renders product details and review component', async () => {
     // success mock
@@ -135,7 +139,7 @@ describe('ProductDetailsPage', () => {
 
     // wait for the error message to be in the document
     await waitFor(() => {
-      expect(screen.getByText('Invalid Product, The entered Product is not listed.')).toBeInTheDocument();
+      expect(screen.getByText('Unable to fetch product details')).toBeInTheDocument();
     })
   })
 })

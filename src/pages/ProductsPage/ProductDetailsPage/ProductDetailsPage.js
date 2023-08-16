@@ -11,10 +11,9 @@ import ProductInformation from './ProductInformation/ProductInformation';
 const ProductDetailsPage = () => {
   // useParams for getting the param from url
   const { productId } = useParams();
-
   const [productDetails, setProductDetails] = useState(null);
   const [error, setError] = useState(null);
-  const [existingEmails, setExistingEmails] = useState([]);
+  const [reviews, setReviews] = useState(null);
 
   // fetch api for getting the product details
   useEffect(() => {
@@ -27,8 +26,7 @@ const ProductDetailsPage = () => {
       })
       .then((product) => {
         setProductDetails(product);
-        const emails = product.reviews.map((review) => review.email);
-        setExistingEmails(emails);
+        setReviews(product.reviews);
       })
       .catch((err) => {
         setError(err.message);
@@ -36,35 +34,12 @@ const ProductDetailsPage = () => {
   }, [productId]);
 
   // handle submit to perform on the child review component form data post to the products detials object
-  const handleFormSubmit = async (formState) => {
-    productDetails.reviews.push(formState)
-    await fetch(`http://localhost:5000/products/${productId}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(productDetails)
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Unable to fetch');
-        }
-        return response.json();
-      })
-      .then((res) => {
-        setProductDetails(res);
-      })
-      .catch((err) => setError(err.message))
-  }
-
-  // error section to render when some error occured
-  if (error) {
-    return <Alert variant='danger'>Invalid Product, The entered Product is not listed.</Alert>
-  }
-
-  // loader when the productDetails loading
-  if (!productDetails) {
-    return <div className="spinner-border text-success" role="status" />
+  const updatedProductReviews = (updatedReviews) => {
+    setProductDetails(prevProductDetails => ({
+      ...prevProductDetails,
+      reviews: [...prevProductDetails.reviews, updatedReviews]
+    }))
+    setReviews(updatedReviews)
   }
 
   return (
@@ -75,38 +50,51 @@ const ProductDetailsPage = () => {
         <Col xs={12}>
           <Link to='/products' className='back-to-products'><FontAwesomeIcon icon={faAngleLeft} />Back to Products</Link>
         </Col>
+        {error
+          ? <Alert variant='danger'>Unable to fetch product details</Alert>
+          : <Row>
+            {!productDetails
+              ? <div className="spinner-border text-success" role="status" />
+              : <>
+                <Col xs={12} sm={6} md={4}>
+                  <Image src={productDetails.imageUrl} alt={productDetails.imgAltText} rounded />
+                </Col>
 
-        <Col xs={12} sm={6} md={4}>
-          <Image src={productDetails.imageUrl} alt={productDetails.imgAltText} rounded />
-        </Col>
+                <Col xs={12} sm={6} md={8}>
+                  <ProductInformation
+                    name={productDetails.name}
+                    description={productDetails.description}
+                    maxRetailPrice={productDetails.maxRetailPrice}
+                    discountApplicable={productDetails.discountApplicable}
+                    quantity={productDetails.quantity} />
 
-        <Col xs={12} sm={6} md={8}>
-          <ProductInformation
-            name={productDetails.name}
-            description={productDetails.description}
-            maxRetailPrice={productDetails.maxRetailPrice}
-            discountApplicable={productDetails.discountApplicable}
-            reviewCount={productDetails.reviews.length}
-            quantity={productDetails.quantity} />
+                  <div className='review-section row' data-testid='review-section'>
+                    <div className='col-sm-6'>
+                      Total Reviews: {reviews?.length}
+                    </div>
+                    <div className='col-sm-6'>
+                      <Review
+                        onFormSubmit={updatedProductReviews}
+                        reviews={reviews} />
+                    </div>
+                  </div>
 
-          <Review
-            onFormSubmit={handleFormSubmit}
-            existingEmails={existingEmails} />
+                  <h6>Customer Reviews:</h6>
+                  <div className='customer-reviews'>
+                    {reviews?.map((review) => {
+                      return (
+                        <div key={review.id}>
+                          <p>{review.rating} <FontAwesomeIcon icon={faStar} /></p>
+                          <p>{review.name}</p>
+                          <p>{review.comment}</p>
+                        </div>
+                      )
+                    })}
+                  </div>
 
-          <h6>Customer Reviews:</h6>
-          <div className='customer-reviews'>
-            {productDetails.reviews?.map((review, index) => {
-              return (
-                <div key={index}>
-                  <p>{review.rating} <FontAwesomeIcon icon={faStar} /></p>
-                  <p>{review.name}</p>
-                  <p>{review.comment}</p>
-                </div>
-              )
-            })}
-          </div>
-        </Col>
-
+                </Col>
+              </>}
+          </Row>}
       </Row>
 
     </Container>

@@ -1,5 +1,6 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import Review from './Review';
+import { mockFetchSuccess, mockFetchFailure } from '../../../../mocks/mockFetch';
 
 global.fetch = jest.fn();
 
@@ -7,7 +8,16 @@ describe('Review', () => {
   // testing the review button click opens modal
   it('should contain write a review button and on click it should show modal for review', () => {
     // render review component
-    render(<Review />);
+    render(<Review reviews={[
+      {
+        id: 1,
+        name: 'Apoorva',
+        email: 'apoorva@gmail.com',
+        phone: '9876543210',
+        rating: 5,
+        comment: 'Good Website'
+      }
+    ]} />);
 
     // get the review button using text and expect to be in the document
     const reviewButton = screen.getByText('Write a Review');
@@ -22,7 +32,16 @@ describe('Review', () => {
   // testing the close button of the modal
   it('should close the review modal when clicked on close button', async () => {
     // render the review component
-    render(<Review />);
+    render(<Review reviews={[
+      {
+        id: 1,
+        name: 'Apoorva',
+        email: 'apoorva@gmail.com',
+        phone: '9876543210',
+        rating: 5,
+        comment: 'Good Website'
+      }
+    ]} />);
 
     // get the review button using text expect to be in the document and trigger click
     const reviewButton = screen.getByText('Write a Review');
@@ -44,7 +63,16 @@ describe('Review', () => {
   // test the errors when submitted without filling the form
   it('render errors when form submitted without filling values', async () => {
     // render review component
-    render(<Review />);
+    render(<Review reviews={[
+      {
+        id: 1,
+        name: 'Apoorva',
+        email: 'apoorva@gmail.com',
+        phone: '9876543210',
+        rating: 5,
+        comment: 'Good Website'
+      }
+    ]} />);
 
     // get the review and trigger click
     const reviewButton = screen.getByText('Write a Review');
@@ -77,22 +105,25 @@ describe('Review', () => {
     // mock submit function
     const onFormSubmitMock = jest.fn();
     // define existing emails
-    const existingEmails = ['a@b.com', 'ab@ab.com'];
 
     // render review components with prop existing emails and prop function onsubmit
-    render(
-      <Review
-        onFormSubmit={onFormSubmitMock}
-        existingEmails={existingEmails}
-      />
-    )
-
+    render(<Review reviews={[
+      {
+        id: 1,
+        name: 'Apoorva',
+        email: 'apoorva@gmail.com',
+        phone: '9876543210',
+        rating: 5,
+        comment: 'Good Website'
+      }
+    ]}
+    onFormSubmit={onFormSubmitMock} />);
     // trigger click on the review button
     fireEvent.click(screen.getByText('Write a Review'));
 
     // trigger change on all the input fields with valid data and use existing email
     fireEvent.change(screen.getByLabelText('Name'), { target: { value: 'Sayansh' } });
-    fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'ab@ab.com' } });
+    fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'apoorva@gmail.com' } });
     fireEvent.change(screen.getByLabelText('Phone'), { target: { value: '1234556788' } });
     fireEvent.change(screen.getByLabelText('Review'), { target: { value: 'Nice Website' } })
     const ratingInput = screen.getByText('Rating').parentElement.querySelectorAll('.star-container');
@@ -106,6 +137,104 @@ describe('Review', () => {
     await waitFor(() => {
       const emailExistingMessage = screen.getByText('Email already used for a review.');
       expect(emailExistingMessage).toBeInTheDocument();
+    })
+  });
+
+  // submit the form with the valid input and expect success message
+  it('should display success message on submitting valid input data', async () => {
+    // success mock
+    mockFetchSuccess(
+      {
+        reviews: [
+          {
+            name: 'Aps',
+            phone: '1234567890',
+            email: 'a@b.com',
+            rating: 2,
+            comment: 'Good Website'
+          }
+        ]
+      }
+    );
+
+    // mock submit function
+    const onFormSubmitMock = jest.fn();
+
+    // render review components with props
+    render(<Review reviews={[
+      {
+        id: 1,
+        name: 'Apoorva',
+        email: 'apoorva@gmail.com',
+        phone: '9876543210',
+        rating: 5,
+        comment: 'Good Website'
+      }
+    ]}
+    onFormSubmit={onFormSubmitMock} />);
+
+    // trigger click on the review button
+    fireEvent.click(screen.getByText('Write a Review'));
+
+    // trigger change on all the input fields with valid data
+    fireEvent.change(screen.getByLabelText('Name'), { target: { value: 'Sayansh' } });
+    fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'sayansh@gmail.com' } });
+    fireEvent.change(screen.getByLabelText('Phone'), { target: { value: '1234556788' } });
+    fireEvent.change(screen.getByLabelText('Review'), { target: { value: 'Nice Website' } })
+    const ratingInput = screen.getByText('Rating').parentElement.querySelectorAll('.star-container');
+    fireEvent.click(ratingInput[2]);
+
+    // trigger click on submit
+    const submitButton = screen.getByText('Submit');
+    fireEvent.click(submitButton);
+
+    // wait for success message
+    await waitFor(() => {
+      const successMessage = screen.getByText('Review saved successfully!');
+      expect(successMessage).toBeInTheDocument();
+    })
+  });
+
+  // displays error message when server gives error while submitting
+  it('[SPYING]: checking the API error handling', async () => {
+    // failure mock
+    mockFetchFailure('Unable to patch', 500);
+
+    // mock submit function
+    const onFormSubmitMock = jest.fn();
+
+    // render review components with props
+    render(<Review reviews={[
+      {
+        id: 1,
+        name: 'Apoorva',
+        email: 'apoorva@gmail.com',
+        phone: '9876543210',
+        rating: 5,
+        comment: 'Good Website'
+      }
+    ]}
+    onFormSubmit={onFormSubmitMock} />);
+
+    // trigger click on the review button
+    fireEvent.click(screen.getByText('Write a Review'));
+
+    // trigger change on all the input fields with valid data
+    fireEvent.change(screen.getByLabelText('Name'), { target: { value: 'Sayansh' } });
+    fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'sayansh@gmail.com' } });
+    fireEvent.change(screen.getByLabelText('Phone'), { target: { value: '1234556788' } });
+    fireEvent.change(screen.getByLabelText('Review'), { target: { value: 'Nice Website' } })
+    const ratingInput = screen.getByText('Rating').parentElement.querySelectorAll('.star-container');
+    fireEvent.click(ratingInput[2]);
+
+    // trigger click on submit
+    const submitButton = screen.getByText('Submit');
+    fireEvent.click(submitButton);
+
+    // wait for error message
+    await waitFor(() => {
+      const errorMessage = screen.getByText('Unable to submit review, try again later.');
+      expect(errorMessage).toBeInTheDocument();
     })
   })
 });

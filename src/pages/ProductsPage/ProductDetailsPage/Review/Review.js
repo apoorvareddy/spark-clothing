@@ -1,20 +1,25 @@
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { Button, Form, Modal } from 'react-bootstrap';
+import { Button, Form, Modal, Alert } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import StarRating from 'react-star-ratings';
 import './Review.css'
 
-const Review = ({ onFormSubmit, existingEmails }) => {
+const Review = ({ onFormSubmit, reviews }) => {
+  const { productId } = useParams();
   const [show, setShow] = useState(false);
+
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [isExisting, setIsExisting] = useState()
 
   // hook form registraion
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
   const [ratingValue, setRatingValue] = useState(1);
-  const [submittedEmails, setSubmittedEmails] = useState(existingEmails);
+  const emails = reviews.map((review) => review.email)
+  const [submittedEmails, setSubmittedEmails] = useState(emails);
 
   // to check if the email is existing
   const isEmailUnique = (email) => {
@@ -24,9 +29,11 @@ const Review = ({ onFormSubmit, existingEmails }) => {
   // performs closing the review modal and resets all data
   const handleClose = () => {
     setShow(false);
-    setIsSuccess(false);
     reset();
-    setRatingValue(0);
+    setRatingValue(1);
+    setIsError(false);
+    setIsExisting(false);
+    setIsSuccess(false);
   }
 
   // performs show logic for modal
@@ -34,22 +41,39 @@ const Review = ({ onFormSubmit, existingEmails }) => {
 
   // performs form submission logic for valid and error scenarios
   const onSubmit = async (formValue) => {
-    if (isEmailUnique(formValue.email)) {
-      await onFormSubmit({
-        ...formValue,
-        rating: ratingValue,
-        id: Math.random()
-      })
-      setSubmittedEmails((prevEmails) => [...prevEmails, formValue.email]);
-      setIsSuccess(true);
-      setTimeout(handleClose, 2000);
-    } else {
-      setIsError(true)
+    const updatedFormValue = {
+      ...formValue,
+      rating: ratingValue,
+      id: Math.random()
     }
-    setTimeout(() => {
-      setIsSuccess(false);
-      setIsError(false);
-    }, 3000);
+    if (isEmailUnique(updatedFormValue.email)) {
+      await fetch(`http://localhost:5000/products/${productId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ reviews: [...reviews, updatedFormValue] })
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Unable to patch');
+          }
+          return response.json();
+        })
+        .then((updatedProduct) => {
+          onFormSubmit(updatedProduct.reviews)
+          setSubmittedEmails((prevEmails) => [...prevEmails, formValue.email]);
+          setIsError(false);
+          setIsExisting(false);
+          setIsSuccess(true);
+          setTimeout(() => {
+            handleClose()
+          }, 3000);
+        })
+        .catch((err) => setIsError(err.message))
+    } else {
+      setIsExisting(true)
+    }
   }
 
   // performs rating change besed on selection
@@ -141,8 +165,9 @@ const Review = ({ onFormSubmit, existingEmails }) => {
             </Button>
           </Modal.Footer>
 
-          {isSuccess && <p className='text-success text-center'>Review saved successfully!</p>}
-          {isError && <p className='text-warning text-center'>Email already used for a review.</p>}
+          {isSuccess && <Alert variant='success'>Review saved successfully!</Alert>}
+          {isError && <Alert variant='danger' className='text-center'>Unable to submit review, try again later.</Alert>}
+          {isExisting && <Alert variant='danger' className='text-center'>Email already used for a review.</Alert>}
         </Form>
       </Modal>
     </div>
@@ -151,7 +176,7 @@ const Review = ({ onFormSubmit, existingEmails }) => {
 
 Review.propTypes = {
   onFormSubmit: PropTypes.func,
-  existingEmails: PropTypes.array
+  reviews: PropTypes.array
 }
 
 export default Review;

@@ -1,12 +1,10 @@
 import { Button, ButtonGroup } from 'react-bootstrap';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import useDiscountedPrice from '../../../../hooks/useDiscountedPrice/useDiscountedPrice';
 
 // product information component with props
-const ProductInformation = ({ name, description, maxRetailPrice, discountApplicable, reviewCount, quantity }) => {
+const ProductInformation = ({ name, description, maxRetailPrice, discountApplicable, quantity }) => {
   const [quantityTicker, setQuantityTicker] = useState(1);
   const { discountedPrice } = useDiscountedPrice(maxRetailPrice, discountApplicable);
 
@@ -34,19 +32,13 @@ const ProductInformation = ({ name, description, maxRetailPrice, discountApplica
         <span className='discount-percentage'>({discountApplicable}% OFF) </span>
       </p>
 
-      <p className='review-count'>Number of Reviews : {reviewCount}</p>
-
       <div className='quantity'>
-        <ButtonGroup aria-label="Quantity change">
+        <ButtonGroup aria-label="Quantity change" className='quantity-button'>
           <Button variant="secondary" data-testid='decrementBtn' onClick={handleDecrement}>-</Button>
           <p className='added-quantity text-center align-items-center' data-testid='currentQuantity'>{quantityTicker}</p>
           <Button variant="secondary" data-testid='incrementBtn' onClick={handleIncrement}>+</Button>
         </ButtonGroup>
-      </div>
-
-      <div className='button-section'>
         <Button variant="secondary">ADD TO CART</Button>
-        <Button className='wishlist-btn'><FontAwesomeIcon icon={faHeart} />WISHLIST</Button>
       </div>
     </div>
   )
@@ -57,7 +49,6 @@ ProductInformation.propTypes = {
   description: PropTypes.string,
   maxRetailPrice: PropTypes.number,
   discountApplicable: PropTypes.number,
-  reviewCount: PropTypes.number,
   quantity: PropTypes.number
 }
 

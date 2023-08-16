@@ -25,7 +25,7 @@ export class ErrorBoundary extends Component {
       return (
         <Alert variant='danger'>
           <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
-          <p>{this.state.errorMessage && this.state.errorMessage.toString()}</p>
+          {/* <p>{this.state.errorMessage && this.state.errorMessage.toString()}</p> */}
           <p>if the error persists contact admin</p>
         </Alert>
       );

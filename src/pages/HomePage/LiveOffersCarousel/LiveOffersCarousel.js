@@ -9,6 +9,7 @@ const LiveOffersCarousel = () => {
   // data related to carousel
   const data = [
     {
+      id: 1,
       src: KidsCloths,
       caption: 'Kids Wear',
       url: '/products?category=Kids',
@@ -16,6 +17,7 @@ const LiveOffersCarousel = () => {
       altText: 'Kids Slide'
     },
     {
+      id: 2,
       src: MensCloths,
       caption: 'Men\'s Wear',
       url: '/products?category=Men',
@@ -23,6 +25,7 @@ const LiveOffersCarousel = () => {
       altText: 'Mens Slide'
     },
     {
+      id: 3,
       src: WomenCloths,
       caption: 'Women\'s Wear',
       url: '/products?category=Women',
@@ -33,9 +36,9 @@ const LiveOffersCarousel = () => {
 
   return (
     <Carousel interval={5000} data-bs-theme="dark">
-      {data.map((slide, i) => {
+      {data.map((slide) => {
         return (
-          <Carousel.Item key={i} className="justify-content-center">
+          <Carousel.Item key={slide.id} className="justify-content-center">
             <img src={slide.src} alt={slide.altText} />
             <Carousel.Caption>
               <p>{slide.description}</p>

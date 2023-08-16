@@ -40,9 +40,9 @@ const LatestProducts = () => {
       <h1>Latest Products</h1>
 
       <Row>
-        {products.map((product, i) => {
+        {products.map((product) => {
           return (
-            <Product key={i}
+            <Product key={product.id}
               imageUrl={product.imageUrl}
               id={product.id}
               name={product.name}

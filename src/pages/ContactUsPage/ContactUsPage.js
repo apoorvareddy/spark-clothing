@@ -28,10 +28,6 @@ const ContactUsPage = () => {
       });
   }, []);
 
-  // show error when the contact data fetch is not done properly
-  if (error) {
-    return <Alert variant='danger'>Unable to fetch contact details, try after some time</Alert>
-  }
   return (
     <Container className='contact-us'>
       <Title pageTitle='Contact Us' />
@@ -40,9 +36,16 @@ const ContactUsPage = () => {
         <Col xs={12} md={6} >
           <h1>Contact Us</h1>
           <p>Reach out to us for any details about the products</p>
-          <p><FontAwesomeIcon icon={faLocationDot} />{contactDetails?.address}</p>
-          <p><FontAwesomeIcon icon={faPhone} />{contactDetails?.phone}</p>
-          <p><FontAwesomeIcon icon={faEnvelope} /> {contactDetails?.email}</p>
+
+          {/* show error when the contact data fetch is not done properly */}
+          {error
+            ? <Alert variant='danger'>Unable to fetch contact details, try after some time</Alert>
+            : <div className='contact-details'>
+              <p><FontAwesomeIcon icon={faLocationDot} />{contactDetails?.address}</p>
+              <p><FontAwesomeIcon icon={faPhone} />{contactDetails?.phone}</p>
+              <p><FontAwesomeIcon icon={faEnvelope} /> {contactDetails?.email}</p>
+            </div>
+          }
         </Col>
 
         <Col xs={12} md={6} >

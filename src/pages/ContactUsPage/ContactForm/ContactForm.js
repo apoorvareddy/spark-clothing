@@ -26,14 +26,15 @@ const ContactForm = () => {
         return response.json();
       })
       .then((res) => {
-        res && setIsSuccess(true);
         res && setIsError(false);
+        res && setIsSuccess(true);
+        // resetting the values after submission
+        reset();
       })
       .catch((err) => {
         err && setIsError(true);
       });
-    // resetting the values after submission
-    reset();
+
     // making isSuccess false after 5 secs of success message
     setTimeout(() => {
       setIsSuccess(false);

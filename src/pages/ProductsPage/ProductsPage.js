@@ -63,11 +63,6 @@ const ProductsPage = () => {
       });
   }, [category, order]);
 
-  // render error if api throws any error
-  if (error) {
-    return <Alert variant='danger'>Unable to fetch products, try again later.</Alert>
-  }
-
   return (
     <Container>
       <Title pageTitle='Products' />
@@ -91,23 +86,25 @@ const ProductsPage = () => {
             <Dropdown.Item eventKey='desc'>Price: High to Low</Dropdown.Item>
           </DropdownButton>
 
-          <Row>
-            {products.map((product, i) => {
-              return (
-                <Product
-                  key={i}
-                  imageUrl={product.imageUrl}
-                  id={product.id}
-                  name={product.name}
-                  maxRetailPrice={product.maxRetailPrice}
-                  tagLine={product.tagLine}
-                  discountApplicable={product.discountApplicable}
-                  imgAltText={product.imgAltText}
-                />
-              );
-            })}
-          </Row>
-
+          {error
+            ? <Alert variant='danger'>Unable to fetch products, try again later.</Alert>
+            : <Row>
+              {products.map((product) => {
+                return (
+                  <Product
+                    key={product.id}
+                    imageUrl={product.imageUrl}
+                    id={product.id}
+                    name={product.name}
+                    maxRetailPrice={product.maxRetailPrice}
+                    tagLine={product.tagLine}
+                    discountApplicable={product.discountApplicable}
+                    imgAltText={product.imgAltText}
+                  />
+                );
+              })}
+            </Row>
+          }
         </div>
       </Row>
     </Container>
